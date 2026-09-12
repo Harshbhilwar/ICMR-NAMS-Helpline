@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        <%= title %>
+    </title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Bootstrap Icons -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Main CSS -->
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+
+    <!-- Login CAPTCHA CSS -->
+
+    <style>
+
+        .login-captcha-row {
+            display: flex;
+            align-items: stretch;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .login-captcha-box {
+            flex: 1;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #eeeeee;
+
+            border: 1px solid #cccccc;
+
+            color: #444444;
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+            font-style: italic;
+
+            letter-spacing: 7px;
+
+            user-select: none;
+
+            overflow: hidden;
+        }
+
+        .login-captcha-refresh {
+            width: 48px;
+            height: 48px;
+
+            border: none;
+
+            border-radius: 4px;
+
+            background: #28a745;
+
+            color: #ffffff;
+
+            font-size: 20px;
+
+            cursor: pointer;
+        }
+
+        .login-captcha-refresh:hover {
+            background: #218838;
+        }
+
+        .login-error-message {
+            display: none;
+
+            margin-bottom: 15px;
+
+            padding: 10px;
+
+            border: 1px solid #f5c2c7;
+
+            border-radius: 4px;
+
+            background: #f8d7da;
+
+            color: #842029;
+
+            text-align: center;
+
+            font-size: 13px;
+        }
+
+        .login-error-message.show {
+            display: block;
+        }
+
+    </style>
+
+</head>
+
+
+<body class="login-page">
+
+
+    <!-- ================================================= -->
+    <!-- LOGIN BACKGROUND -->
+    <!-- ================================================= -->
+
+    <div class="login-background">
+
+
+        <!-- ================================================= -->
+        <!-- ICMR-NAMS RIBBON -->
+        <!-- ================================================= -->
+
+        <div class="login-ribbon">
+
+            <div class="ribbon-left"></div>
+
+            <div class="ribbon-title">
+                ICMR-NAMS
+            </div>
+
+            <div class="ribbon-right"></div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- LOGIN CARD -->
+        <!-- ================================================= -->
+
+        <div class="login-card">
+
+
+            <!-- ================================================= -->
+            <!-- LOGOS -->
+            <!-- ================================================= -->
+
+            <div class="login-logos">
+
+                <img
+                    src="/images/icmr-logo.png"
+                    alt="Indian Council of Medical Research"
+                    class="login-icmr-logo"
+                >
+
+                <img
+                    src="/images/nams-logo.png"
+                    alt="National Academy of Medical Sciences"
+                    class="login-nams-logo"
+                >
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- LOGIN MESSAGE -->
+            <!-- ================================================= -->
+
+            <div
+                id="loginErrorMessage"
+                class="login-error-message"
+            >
+
+                <%= error || "" %>
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- LOGIN FORM -->
+            <!-- ================================================= -->
+
+            <form
+                action="/login"
+                method="POST"
+                id="loginForm"
+            >
+
+
+                <!-- ================================================= -->
+                <!-- LOGIN ID -->
+                <!-- ================================================= -->
+
+                <div class="login-form-group">
+
+                    <label for="email">
+                        LOGIN ID (REGISTER EMAIL ID)
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="login-input"
+                        placeholder="example@gmail.com"
+                        required
+                        autocomplete="email"
+                    >
+
+                </div>
+
+
+
+                <!-- ================================================= -->
+                <!-- PASSWORD -->
+                <!-- ================================================= -->
+
+                <div class="login-form-group">
+
+                    <label for="password">
+                        PASSWORD
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="login-input"
+                        placeholder="******"
+                        required
+                        autocomplete="current-password"
+                    >
+
+                </div>
+
+
+
+                <!-- ================================================= -->
+                <!-- CAPTCHA -->
+                <!-- ================================================= -->
+
+                <div class="login-form-group">
+
+                    <label>
+                        CAPTCHA
+                    </label>
+
+
+                    <div class="login-captcha-row">
+
+                        <div
+                            class="login-captcha-box"
+                            id="loginCaptchaText"
+                        >
+                            <%= captcha %>
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="login-captcha-refresh"
+                            id="refreshLoginCaptcha"
+                            title="Refresh Captcha"
+                        >
+
+                            <i class="bi bi-arrow-clockwise"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <input
+                        type="text"
+                        id="captcha"
+                        name="captcha"
+                        class="login-input"
+                        placeholder="Enter captcha"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- ================================================= -->
+                <!-- LOGIN BUTTON -->
+                <!-- ================================================= -->
+
+                <button
+                    type="submit"
+                    class="login-submit-button"
+                    id="loginButton"
+                >
+
+                    <i class="bi bi-lock-fill"></i>
+
+                    Login Securely
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- ================================================= -->
+            <!-- BOTTOM LINKS -->
+            <!-- ================================================= -->
+
+            <div class="login-links">
+
+                <a
+                    href="/"
+                    title="Home"
+                >
+
+                    <i class="bi bi-house-fill"></i>
+
+                </a>
+
+
+                <span>|</span>
+
+
+                <a href="/register">
+                    Register
+                </a>
+
+
+                <span>|</span>
+
+
+                <a href="/forgot-password">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ================================================= -->
+
+    <script>
+
+
+        /* ==============================================
+           SHOW ERROR MESSAGE
+        ============================================== */
+
+        const errorMessage =
+            document.getElementById(
+                "loginErrorMessage"
+            );
+
+
+        if (
+            errorMessage.textContent.trim() !== ""
+        ) {
+
+            errorMessage.classList.add(
+                "show"
+            );
+
+        }
+
+
+
+        /* ==============================================
+           REFRESH CAPTCHA
+        ============================================== */
+
+        const refreshCaptchaButton =
+            document.getElementById(
+                "refreshLoginCaptcha"
+            );
+
+
+        refreshCaptchaButton.addEventListener(
+            "click",
+            async () => {
+
+                try {
+
+                    refreshCaptchaButton.disabled =
+                        true;
+
+
+                    const response =
+                        await fetch(
+                            "/login-captcha",
+                            {
+                                method: "POST"
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    if (data.success) {
+
+                        document.getElementById(
+                            "loginCaptchaText"
+                        ).textContent =
+                            data.captcha;
+
+                    }
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Captcha refresh error:",
+                        error
+                    );
+
+                } finally {
+
+                    refreshCaptchaButton.disabled =
+                        false;
+
+                }
+
+            }
+        );
+
+
+
+        /* ==============================================
+           LOGIN BUTTON
+        ============================================== */
+
+        const loginForm =
+            document.getElementById(
+                "loginForm"
+            );
+
+
+        const loginButton =
+            document.getElementById(
+                "loginButton"
+            );
+
+
+        loginForm.addEventListener(
+            "submit",
+            () => {
+
+                loginButton.disabled =
+                    true;
+
+
+                loginButton.innerHTML =
+                    '<i class="bi bi-hourglass-split"></i> Checking...';
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>

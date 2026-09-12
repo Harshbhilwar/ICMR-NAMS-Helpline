@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Personal Details - ICMR-NAMS</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Dashboard CSS -->
+    <link
+        rel="stylesheet"
+        href="/css/dashboard.css"
+    >
+
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+
+    <!-- ================================================= -->
+    <!-- SIDEBAR -->
+    <!-- ================================================= -->
+
+    <aside class="dashboard-sidebar">
+
+        <div class="sidebar-title">
+            ICMR-NAMS
+        </div>
+
+        <!-- USER INFORMATION -->
+
+        <div class="sidebar-user">
+
+            <div class="user-id">
+                User-ID:
+                <strong>
+                    <%= user ? user._id : "Pending" %>
+                </strong>
+            </div>
+
+            <div class="username">
+                <%= user ? user.username : "Applicant" %>
+            </div>
+
+            <div class="email-verified">
+                (Email Verified)
+            </div>
+
+        </div>
+
+        <div class="sidebar-separator"></div>
+
+
+        <!-- ================================================= -->
+        <!-- APPLICANT PROFILE -->
+        <!-- ================================================= -->
+
+        <div class="sidebar-section-title">
+            Applicant Profile
+        </div>
+
+        <div
+            class="sidebar-menu-item active"
+            id="applicantProfileToggle"
+        >
+
+            <i class="bi bi-person-fill"></i>
+
+            <span>
+                Applicant Profile
+            </span>
+
+            <i
+                class="bi bi-chevron-down menu-arrow"
+                id="applicantProfileArrow"
+            ></i>
+
+        </div>
+
+        <div
+            class="sidebar-submenu-item"
+            id="personalDetailsMenu"
+        >
+
+            <i class="bi bi-circle"></i>
+
+            <a href="/personal-details">
+                Personal Details
+            </a>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- EXPERT HELP -->
+        <!-- ================================================= -->
+
+        <div
+            class="sidebar-menu-item"
+            id="expertHelpToggle"
+        >
+
+            <i class="bi bi-person-workspace"></i>
+
+            <span>
+                Expert Help
+            </span>
+
+            <i
+                class="bi bi-chevron-right menu-arrow"
+                id="expertHelpArrow"
+            ></i>
+
+        </div>
+
+        <div
+            class="sidebar-submenu-item submenu-hidden"
+            id="viewApplySessionMenu"
+        >
+
+            <i class="bi bi-circle"></i>
+
+            <a href="/view-apply-session">
+                View/Apply Session
+            </a>
+
+        </div>
+
+
+        <!-- RESOURCE FACULTY -->
+
+        <div class="sidebar-menu-item standalone">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            <span>
+                Resource Faculty
+            </span>
+
+        </div>
+
+
+        <!-- USER GUIDE -->
+
+        <div class="sidebar-menu-item standalone">
+
+            <i class="bi bi-download"></i>
+
+            <span>
+                User Guide (PDF)
+            </span>
+
+        </div>
+
+
+        <!-- LOGOUT -->
+
+        <a
+            href="/logout"
+            class="dashboard-logout"
+        >
+
+            <span>
+                Logout
+            </span>
+
+            <i class="bi bi-box-arrow-right"></i>
+
+        </a>
+
+    </aside>
+
+
+
+    <!-- ================================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ================================================= -->
+
+    <main class="dashboard-main">
+
+        <!-- TOP BAR -->
+
+        <div class="dashboard-topbar">
+
+            <button
+                type="button"
+                class="sidebar-toggle"
+                id="sidebarToggle"
+            >
+
+                <i class="bi bi-list"></i>
+
+            </button>
+
+            <span class="dashboard-page-title">
+                Dashboard
+            </span>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- PERSONAL DETAILS FORM -->
+        <!-- ================================================= -->
+
+        <section class="add-personal-details-content">
+
+            <!-- PAGE TITLE -->
+
+            <div class="personal-form-title">
+                Personal details of Applicant
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- FORM -->
+            <!-- ================================================= -->
+
+            <form
+                action="/personal-details/save"
+                method="POST"
+                class="personal-form-card"
+            >
+
+
+                <!-- ================================================= -->
+                <!-- BASIC INFORMATION -->
+                <!-- ================================================= -->
+
+                <div class="personal-form-section-title">
+                    BASIC INFORMATION
+                </div>
+
+
+                <!-- USER NAME -->
+
+                <div class="personal-form-group">
+
+                    <label>
+                        User Name <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        value="<%= user && user.username ? user.username : (user ? user.email.split('@')[0] : '') %>"
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="personal-form-group">
+
+                    <label>
+                        Email Address <span>*</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        value="<%= user ? user.email : '' %>"
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- GENDER -->
+
+                <div class="personal-form-group">
+
+                    <label>
+                        Gender <span>*</span>
+                    </label>
+
+                    <select
+                        name="gender"
+                        required
+                    >
+
+                        <option value="">
+                            Select Gender
+                        </option>
+
+                        <option value="Male">
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <div class="personal-form-group">
+
+                    <label>
+                        Category <span>*</span>
+                    </label>
+
+                    <select
+                        name="category"
+                        required
+                    >
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option value="General">
+                            General
+                        </option>
+
+                        <option value="OBC">
+                            OBC
+                        </option>
+
+                        <option value="SC">
+                            SC
+                        </option>
+
+                        <option value="ST">
+                            ST
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- ================================================= -->
+                <!-- WORKING INSTITUTE INFORMATION -->
+                <!-- ================================================= -->
+
+                <div class="personal-form-section-title">
+
+                    WORKING INSTITUTE'S INFORMATION
+
+                    <span class="section-note">
+                        Note: Institute information is the information from where you will apply proposal
+                    </span>
+
+                </div>
+
+
+                <!-- STATE -->
+
+                <div class="personal-form-group">
+
+                    <label>
+                        Select state in which your Institute situated
+                        <span>*</span>
+                    </label>
+
+                    <select
+                        name="state"
+                        id="state"
+                        required
+                    >
+
+                        <option value="">
+                            Select State
+                        </option>
+
+                        <option value="Andhra Pradesh">
+                            Andhra Pradesh
+                        </option>
+
+                        <option value="Bihar">
+                            Bihar
+                        </option>
+
+                        <option value="Delhi">
+                            Delhi
+                        </option>
+
+                        <option value="Gujarat">
+                            Gujarat
+                        </option>
+
+                        <option value="Haryana">
+                            Haryana
+                        </option>
+
+                        <option value="Karnataka">
+                            Karnataka
+                        </option>
+
+                        <option value="Madhya Pradesh">
+                            Madhya Pradesh
+                        </option>
+
+                        <option value="Maharashtra">
+                            Maharashtra
+                        </option>
+
+                        <option value="Rajasthan">
+                            Rajasthan
+                        </option>
+
+                        <option value="Tamil Nadu">
+                            Tamil Nadu
+                        </option>
+
+                        <option value="Telangana">
+                            Telangana
+                        </option>
+
+                        <option value="Uttar Pradesh">
+                            Uttar Pradesh
+                        </option>
+
+                        <option value="West Bengal">
+                            West Bengal
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DISTRICT -->
+
+                <div class="personal-form-group">
+
+                    <label>
+                        Select district in which your Institute situated
+                        <span>*</span>
+                    </label>
+
+                    <select
+                        name="district"
+                        id="district"
+                        required
+                    >
+
+                        <option value="">
+                            Select District
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- INSTITUTE -->
+
+                <div class="personal-form-group">
+
+                    <label>
+                        Institute <span>*</span>
+                    </label>
+
+                    <select
+                        name="institute"
+                        id="institute"
+                        required
+                    >
+
+                        <option value="">
+                            Select Institute
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- PROGRAMME -->
+
+                <div class="personal-form-group">
+
+                    <label>
+                        Name of programme <span>*</span>
+                    </label>
+
+                    <select
+                        name="programme"
+                        required
+                    >
+
+                        <option value="">
+                            Select
+                        </option>
+
+                        <option value="Research">
+                            Research
+                        </option>
+
+                        <option value="Post Graduation">
+                            Post Graduation
+                        </option>
+
+                        <option value="PhD">
+                            PhD
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DEPARTMENT -->
+
+                <div class="personal-form-group">
+
+                    <label>
+                        Your Department <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        name="department"
+                        placeholder="Department name in the Institute"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- BUTTONS -->
+                <!-- ================================================= -->
+
+                <div class="personal-form-buttons">
+
+                    <!-- VIEW DETAIL -->
+
+                    <button
+                        type="button"
+                        class="personal-blue-button"
+                        id="viewDetailButton"
+                    >
+
+                        <i class="bi bi-eye-fill"></i>
+
+                        View Detail
+
+                    </button>
+
+
+                    <!-- SAVE DETAIL -->
+
+                    <button
+                        type="submit"
+                        class="personal-blue-button"
+                        id="saveDetailButton"
+                    >
+
+                        <i class="bi bi-plus-circle"></i>
+
+                        Save Detail
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- FOOTER -->
+        <!-- ================================================= -->
+
+        <footer class="dashboard-footer">
+
+            <div>
+
+                Copyright © 2026
+
+                <strong>
+                    Indian Council of Medical Research, IT Division.
+                </strong>
+
+                All rights reserved.
+
+            </div>
+
+            <div id="dashboardDateTime"></div>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ================================================= -->
+
+<script>
+
+    /* =================================================
+       SIDEBAR COLLAPSE
+    ================================================= */
+
+    const sidebarToggle =
+        document.getElementById("sidebarToggle");
+
+    const dashboardWrapper =
+        document.querySelector(".dashboard-wrapper");
+
+    if (sidebarToggle && dashboardWrapper) {
+
+        sidebarToggle.addEventListener("click", function () {
+
+            dashboardWrapper.classList.toggle(
+                "sidebar-collapsed"
+            );
+
+        });
+
+    }
+
+
+
+    /* =================================================
+       APPLICANT PROFILE TOGGLE
+    ================================================= */
+
+    const applicantProfileToggle =
+        document.getElementById(
+            "applicantProfileToggle"
+        );
+
+    const personalDetailsMenu =
+        document.getElementById(
+            "personalDetailsMenu"
+        );
+
+    const applicantProfileArrow =
+        document.getElementById(
+            "applicantProfileArrow"
+        );
+
+
+    if (
+        applicantProfileToggle &&
+        personalDetailsMenu &&
+        applicantProfileArrow
+    ) {
+
+        applicantProfileToggle.addEventListener(
+            "click",
+            function () {
+
+                personalDetailsMenu.classList.toggle(
+                    "submenu-hidden"
+                );
+
+
+                if (
+                    personalDetailsMenu.classList.contains(
+                        "submenu-hidden"
+                    )
+                ) {
+
+                    applicantProfileArrow.classList.remove(
+                        "bi-chevron-down"
+                    );
+
+                    applicantProfileArrow.classList.add(
+                        "bi-chevron-right"
+                    );
+
+                } else {
+
+                    applicantProfileArrow.classList.remove(
+                        "bi-chevron-right"
+                    );
+
+                    applicantProfileArrow.classList.add(
+                        "bi-chevron-down"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       EXPERT HELP TOGGLE
+    ================================================= */
+
+    const expertHelpToggle =
+        document.getElementById(
+            "expertHelpToggle"
+        );
+
+    const viewApplySessionMenu =
+        document.getElementById(
+            "viewApplySessionMenu"
+        );
+
+    const expertHelpArrow =
+        document.getElementById(
+            "expertHelpArrow"
+        );
+
+
+    if (
+        expertHelpToggle &&
+        viewApplySessionMenu &&
+        expertHelpArrow
+    ) {
+
+        expertHelpToggle.addEventListener(
+            "click",
+            function () {
+
+                viewApplySessionMenu.classList.toggle(
+                    "submenu-hidden"
+                );
+
+
+                if (
+                    viewApplySessionMenu.classList.contains(
+                        "submenu-hidden"
+                    )
+                ) {
+
+                    expertHelpArrow.classList.remove(
+                        "bi-chevron-down"
+                    );
+
+                    expertHelpArrow.classList.add(
+                        "bi-chevron-right"
+                    );
+
+                } else {
+
+                    expertHelpArrow.classList.remove(
+                        "bi-chevron-right"
+                    );
+
+                    expertHelpArrow.classList.add(
+                        "bi-chevron-down"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       DATE + TIME
+    ================================================= */
+
+    function updateDateTime() {
+
+        const now = new Date();
+
+        const options = {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        };
+
+        const date =
+            now.toLocaleDateString(
+                "en-IN",
+                options
+            );
+
+        const time =
+            now.toLocaleTimeString(
+                "en-IN",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit"
+                }
+            );
+
+        const dateTimeElement =
+            document.getElementById(
+                "dashboardDateTime"
+            );
+
+        if (dateTimeElement) {
+
+            dateTimeElement.textContent =
+                `${date}, ${time}`;
+
+        }
+
+    }
+
+    updateDateTime();
+
+    setInterval(
+        updateDateTime,
+        1000
+    );
+
+
+
+    /* =================================================
+       STATE → DISTRICT
+    ================================================= */
+
+    const stateSelect =
+        document.getElementById("state");
+
+    const districtSelect =
+        document.getElementById("district");
+
+    const instituteSelect =
+        document.getElementById("institute");
+
+
+
+    const districtsByState = {
+
+        "Andhra Pradesh": [
+            "Alluri Sitharama Raju",
+            "Anakapalli",
+            "Anantapur",
+            "Annamayya",
+            "Bapatla",
+            "Chittoor",
+            "Dr. B. R. Ambedkar Konaseema",
+            "East Godavari",
+            "Eluru",
+            "Guntur",
+            "Kakinada",
+            "Krishna",
+            "Kurnool",
+            "Nandyal",
+            "NTR",
+            "Palnadu",
+            "Parvathipuram Manyam",
+            "Prakasam",
+            "Sri Potti Sriramulu Nellore",
+            "Sri Sathya Sai",
+            "Srikakulam",
+            "Tirupati",
+            "Visakhapatnam",
+            "Vizianagaram",
+            "West Godavari",
+            "YSR Kadapa"
+        ],
+
+        "Bihar": [
+            "Araria",
+            "Arwal",
+            "Aurangabad",
+            "Banka",
+            "Begusarai",
+            "Bhagalpur",
+            "Bhojpur",
+            "Buxar",
+            "Darbhanga",
+            "East Champaran",
+            "Gaya",
+            "Gopalganj",
+            "Jamui",
+            "Jehanabad",
+            "Kaimur",
+            "Katihar",
+            "Khagaria",
+            "Kishanganj",
+            "Lakhisarai",
+            "Madhepura",
+            "Madhubani",
+            "Munger",
+            "Muzaffarpur",
+            "Nalanda",
+            "Nawada",
+            "Patna",
+            "Purnia",
+            "Rohtas",
+            "Saharsa",
+            "Samastipur",
+            "Saran",
+            "Sheikhpura",
+            "Sheohar",
+            "Sitamarhi",
+            "Siwan",
+            "Supaul",
+            "Vaishali",
+            "West Champaran"
+        ],
+
+        "Delhi": [
+            "Central Delhi",
+            "East Delhi",
+            "New Delhi",
+            "North Delhi",
+            "North East Delhi",
+            "North West Delhi",
+            "Shahdara",
+            "South Delhi",
+            "South East Delhi",
+            "South West Delhi",
+            "West Delhi"
+        ],
+
+        "Gujarat": [
+            "Ahmedabad",
+            "Amreli",
+            "Anand",
+            "Aravalli",
+            "Banaskantha",
+            "Bharuch",
+            "Bhavnagar",
+            "Botad",
+            "Chhota Udaipur",
+            "Dahod",
+            "Dang",
+            "Devbhoomi Dwarka",
+            "Gandhinagar",
+            "Gir Somnath",
+            "Jamnagar",
+            "Junagadh",
+            "Kheda",
+            "Kutch",
+            "Mahisagar",
+            "Mehsana",
+            "Morbi",
+            "Narmada",
+            "Navsari",
+            "Panchmahal",
+            "Patan",
+            "Porbandar",
+            "Rajkot",
+            "Sabarkantha",
+            "Surat",
+            "Surendranagar",
+            "Tapi",
+            "Vadodara",
+            "Valsad"
+        ],
+
+        "Haryana": [
+            "Ambala",
+            "Bhiwani",
+            "Charkhi Dadri",
+            "Faridabad",
+            "Fatehabad",
+            "Gurugram",
+            "Hisar",
+            "Jhajjar",
+            "Jind",
+            "Kaithal",
+            "Karnal",
+            "Kurukshetra",
+            "Mahendragarh",
+            "Nuh",
+            "Palwal",
+            "Panchkula",
+            "Panipat",
+            "Rewari",
+            "Rohtak",
+            "Sirsa",
+            "Sonipat",
+            "Yamunanagar"
+        ],
+
+        "Karnataka": [
+            "Bagalkot",
+            "Ballari",
+            "Belagavi",
+            "Bengaluru Rural",
+            "Bengaluru Urban",
+            "Bidar",
+            "Chamarajanagar",
+            "Chikballapur",
+            "Chikkamagaluru",
+            "Chitradurga",
+            "Dakshina Kannada",
+            "Davanagere",
+            "Dharwad",
+            "Gadag",
+            "Hassan",
+            "Haveri",
+            "Kalaburagi",
+            "Kodagu",
+            "Kolar",
+            "Koppal",
+            "Mandya",
+            "Mysuru",
+            "Raichur",
+            "Ramanagara",
+            "Shivamogga",
+            "Tumakuru",
+            "Udupi",
+            "Uttara Kannada",
+            "Vijayapura",
+            "Vijayanagara",
+            "Yadgir"
+        ],
+
+        "Madhya Pradesh": [
+            "Agar Malwa",
+            "Alirajpur",
+            "Anuppur",
+            "Ashoknagar",
+            "Balaghat",
+            "Barwani",
+            "Betul",
+            "Bhind",
+            "Bhopal",
+            "Burhanpur",
+            "Chhatarpur",
+            "Chhindwara",
+            "Damoh",
+            "Datia",
+            "Dewas",
+            "Dhar",
+            "Dindori",
+            "Guna",
+            "Gwalior",
+            "Harda",
+            "Indore",
+            "Jabalpur",
+            "Jhabua",
+            "Katni",
+            "Khandwa",
+            "Khargone",
+            "Maihar",
+            "Mandla",
+            "Mandsaur",
+            "Mauganj",
+            "Morena",
+            "Narmadapuram",
+            "Narsinghpur",
+            "Neemuch",
+            "Panna",
+            "Raisen",
+            "Rajgarh",
+            "Ratlam",
+            "Rewa",
+            "Sagar",
+            "Satna",
+            "Sehore",
+            "Seoni",
+            "Shahdol",
+            "Shajapur",
+            "Sheopur",
+            "Shivpuri",
+            "Sidhi",
+            "Singrauli",
+            "Tikamgarh",
+            "Ujjain",
+            "Umaria",
+            "Vidisha"
+        ],
+
+        "Maharashtra": [
+            "Ahmednagar",
+            "Akola",
+            "Amravati",
+            "Beed",
+            "Bhandara",
+            "Buldhana",
+            "Chandrapur",
+            "Chhatrapati Sambhajinagar",
+            "Dharashiv",
+            "Dhule",
+            "Gadchiroli",
+            "Gondia",
+            "Hingoli",
+            "Jalgaon",
+            "Jalna",
+            "Kolhapur",
+            "Latur",
+            "Mumbai City",
+            "Mumbai Suburban",
+            "Nagpur",
+            "Nanded",
+            "Nandurbar",
+            "Nashik",
+            "Palghar",
+            "Parbhani",
+            "Pune",
+            "Raigad",
+            "Ratnagiri",
+            "Sangli",
+            "Satara",
+            "Sindhudurg",
+            "Solapur",
+            "Thane",
+            "Wardha",
+            "Washim",
+            "Yavatmal"
+        ],
+
+        "Rajasthan": [
+            "Ajmer",
+            "Alwar",
+            "Balotra",
+            "Banswara",
+            "Baran",
+            "Barmer",
+            "Beawar",
+            "Bharatpur",
+            "Bhilwara",
+            "Bikaner",
+            "Bundi",
+            "Chittorgarh",
+            "Churu",
+            "Dausa",
+            "Deeg",
+            "Dholpur",
+            "Didwana-Kuchamana",
+            "Dudu",
+            "Dungarpur",
+            "Ganganagar",
+            "Gangapur City",
+            "Hanumangarh",
+            "Jaipur",
+            "Jaisalmer",
+            "Jalore",
+            "Jhalawar",
+            "Jhunjhunu",
+            "Jodhpur",
+            "Karauli",
+            "Khairthal-Tijara",
+            "Kota",
+            "Kotputli-Behror",
+            "Nagaur",
+            "Pali",
+            "Phalodi",
+            "Pratapgarh",
+            "Rajsamand",
+            "Salumbar",
+            "Sawai Madhopur",
+            "Sikar",
+            "Sirohi",
+            "Tonk",
+            "Udaipur"
+        ],
+
+        "Tamil Nadu": [
+            "Ariyalur",
+            "Chengalpattu",
+            "Chennai",
+            "Coimbatore",
+            "Cuddalore",
+            "Dharmapuri",
+            "Dindigul",
+            "Erode",
+            "Kallakurichi",
+            "Kancheepuram",
+            "Karur",
+            "Krishnagiri",
+            "Madurai",
+            "Mayiladuthurai",
+            "Nagapattinam",
+            "Namakkal",
+            "Nilgiris",
+            "Perambalur",
+            "Pudukkottai",
+            "Ramanathapuram",
+            "Ranipet",
+            "Salem",
+            "Sivaganga",
+            "Tenkasi",
+            "Thanjavur",
+            "Theni",
+            "Thoothukudi",
+            "Tiruchirappalli",
+            "Tirunelveli",
+            "Tirupathur",
+            "Tiruppur",
+            "Tiruvallur",
+            "Tiruvannamalai",
+            "Tiruvarur",
+            "Vellore",
+            "Viluppuram",
+            "Virudhunagar"
+        ],
+
+        "Telangana": [
+            "Adilabad",
+            "Bhadradri Kothagudem",
+            "Hanamkonda",
+            "Hyderabad",
+            "Jagtial",
+            "Jangaon",
+            "Jayashankar Bhupalpally",
+            "Jogulamba Gadwal",
+            "Kamareddy",
+            "Karimnagar",
+            "Khammam",
+            "Komaram Bheem Asifabad",
+            "Mahabubabad",
+            "Mahabubnagar",
+            "Mancherial",
+            "Medak",
+            "Medchal-Malkajgiri",
+            "Mulugu",
+            "Nagarkurnool",
+            "Nalgonda",
+            "Narayanpet",
+            "Nirmal",
+            "Nizamabad",
+            "Peddapalli",
+            "Rajanna Sircilla",
+            "Rangareddy",
+            "Sangareddy",
+            "Siddipet",
+            "Suryapet",
+            "Vikarabad",
+            "Wanaparthy",
+            "Warangal",
+            "Yadadri Bhuvanagiri"
+        ],
+
+        "Uttar Pradesh": [
+            "Agra",
+            "Aligarh",
+            "Ambedkar Nagar",
+            "Amethi",
+            "Amroha",
+            "Auraiya",
+            "Ayodhya",
+            "Azamgarh",
+            "Baghpat",
+            "Bahraich",
+            "Ballia",
+            "Balrampur",
+            "Banda",
+            "Barabanki",
+            "Bareilly",
+            "Basti",
+            "Bhadohi",
+            "Bijnor",
+            "Budaun",
+            "Bulandshahr",
+            "Chandauli",
+            "Chitrakoot",
+            "Deoria",
+            "Etah",
+            "Etawah",
+            "Farrukhabad",
+            "Fatehpur",
+            "Firozabad",
+            "Gautam Buddha Nagar",
+            "Ghaziabad",
+            "Ghazipur",
+            "Gonda",
+            "Gorakhpur",
+            "Hamirpur",
+            "Hapur",
+            "Hardoi",
+            "Hathras",
+            "Jalaun",
+            "Jaunpur",
+            "Jhansi",
+            "Kannauj",
+            "Kanpur Dehat",
+            "Kanpur Nagar",
+            "Kasganj",
+            "Kaushambi",
+            "Kushinagar",
+            "Lakhimpur Kheri",
+            "Lalitpur",
+            "Lucknow",
+            "Maharajganj",
+            "Mahoba",
+            "Mainpuri",
+            "Mathura",
+            "Mau",
+            "Meerut",
+            "Mirzapur",
+            "Moradabad",
+            "Muzaffarnagar",
+            "Pilibhit",
+            "Pratapgarh",
+            "Prayagraj",
+            "Raebareli",
+            "Rampur",
+            "Saharanpur",
+            "Sambhal",
+            "Sant Kabir Nagar",
+            "Shahjahanpur",
+            "Shamli",
+            "Shravasti",
+            "Siddharthnagar",
+            "Sitapur",
+            "Sonbhadra",
+            "Sultanpur",
+            "Unnao",
+            "Varanasi"
+        ],
+
+        "West Bengal": [
+            "Alipurduar",
+            "Bankura",
+            "Paschim Bardhaman",
+            "Purba Bardhaman",
+            "Birbhum",
+            "Cooch Behar",
+            "Darjeeling",
+            "Hooghly",
+            "Howrah",
+            "Jalpaiguri",
+            "Jhargram",
+            "Kalimpong",
+            "Kolkata",
+            "Maldah",
+            "Murshidabad",
+            "Nadia",
+            "North 24 Parganas",
+            "South 24 Parganas",
+            "Uttar Dinajpur",
+            "Dakshin Dinajpur",
+            "Paschim Medinipur",
+            "Purba Medinipur"
+        ]
+
+    };
+
+
+
+    /* =================================================
+       STATE → DISTRICT
+    ================================================= */
+
+    if (stateSelect) {
+
+        stateSelect.addEventListener(
+            "change",
+            function () {
+
+                const selectedState = this.value;
+
+                districtSelect.innerHTML = `
+                    <option value="">
+                        Select District
+                    </option>
+                `;
+
+                instituteSelect.innerHTML = `
+                    <option value="">
+                        Select Institute
+                    </option>
+                `;
+
+                const districts =
+                    districtsByState[selectedState] || [];
+
+                districts.forEach(
+                    function (district) {
+
+                        const option =
+                            document.createElement("option");
+
+                        option.value = district;
+
+                        option.textContent = district;
+
+                        districtSelect.appendChild(option);
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       DISTRICT → INSTITUTE
+    ================================================= */
+
+    const institutesByDistrict = {
+
+        /* =========================
+           DELHI
+        ========================= */
+
+        "Central Delhi": [
+            "District Institute of Education and Training, Central",
+            "Hindu College",
+            "St. Stephen's College",
+            "Ramjas College",
+            "Sri Guru Tegh Bahadur Khalsa College",
+            "Indraprastha Institute of Technology and Management"
+        ],
+
+        "East Delhi": [
+            "Bhai Parmanand Institute of Business Studies",
+            "Shaheed Rajguru College of Applied Sciences for Women",
+            "Janki Devi Polytechnic",
+            "Institute of Human Behaviour and Allied Sciences",
+            "District Institute of Education and Training, East"
+        ],
+
+        "New Delhi": [
+            "Jawaharlal Nehru University",
+            "University of Delhi",
+            "Lady Hardinge Medical College",
+            "Lady Irwin College",
+            "Maitreyi College",
+            "Atma Ram Sanatan Dharam College",
+            "Moti Lal Nehru College",
+            "Ram Lal Anand College",
+            "Jesus and Mary College",
+            "College of Art",
+            "District Institute of Education and Training, New Delhi"
+        ],
+
+        "North Delhi": [
+            "Delhi Technological University",
+            "Hansraj College",
+            "Kirori Mal College",
+            "Miranda House",
+            "Ramjas College",
+            "Daulat Ram College",
+            "District Institute of Education and Training, North"
+        ],
+
+        "North East Delhi": [
+            "Dr. Bhim Rao Ambedkar College",
+            "Guru Nanak Dev Institute of Technology",
+            "Maharaja Surajmal Institute",
+            "District Institute of Education and Training, North-East"
+        ],
+
+        "North West Delhi": [
+            "Delhi Technological University",
+            "Maharaja Agrasen Institute of Technology",
+            "Bhagwan Parshuram Institute of Technology",
+            "Jagan Institute of Management Studies",
+            "District Institute of Education and Training, North-West"
+        ],
+
+        "Shahdara": [
+            "Dr. Bhim Rao Ambedkar College",
+            "Vivekananda College",
+            "Shaheed Bhagat Singh College",
+            "Guru Gobind Singh Indraprastha University",
+            "District Institute of Education and Training, East"
+        ],
+
+        "South Delhi": [
+            "All India Institute of Medical Sciences",
+            "Indian Institute of Technology Delhi",
+            "Jamia Millia Islamia",
+            "Sri Venkateswara College",
+            "Jesus and Mary College",
+            "Maitreyi College",
+            "Shaheed Bhagat Singh College",
+            "District Institute of Education and Training, South"
+        ],
+
+        "South East Delhi": [
+            "Lady Shri Ram College for Women",
+            "Rajkumari Amrit Kaur College of Nursing",
+            "Jamia Millia Islamia",
+            "Jamia Millia Islamia",
+            "National Institute of Technology Delhi",
+            "Maulana Azad Medical College",
+            "Govind Ballabh Pant Hospital",
+            "District Institute of Education and Training, South"
+        ],
+
+        "South West Delhi": [
+            "Netaji Subhas University of Technology",
+            "Guru Gobind Singh Indraprastha University",
+            "Indraprastha Institute of Information Technology Delhi",
+            "National Law University Delhi",
+            "Ch. Brahm Prakash Government Engineering College",
+            "Industrial Training Institute, Jaffarpur",
+            "District Institute of Education and Training, South-West"
+        ],
+
+        "West Delhi": [
+            "Rajdhani College",
+            "Deen Dayal Upadhyaya College",
+            "Shivaji College",
+            "Janki Devi Memorial College",
+            "Bharti College",
+            "District Institute of Education and Training, West"
+        ],
+
+
+        /* =========================
+           UTTAR PRADESH
+        ========================= */
+
+        "Prayagraj": [
+            "Motilal Nehru National Institute of Technology",
+            "University of Allahabad",
+            "Motilal Nehru Medical College",
+            "United University"
+        ],
+
+        "Lucknow": [
+            "King George's Medical University",
+            "Dr. Ram Manohar Lohia Institute of Medical Sciences",
+            "University of Lucknow",
+            "Sanjay Gandhi Postgraduate Institute of Medical Sciences"
+        ],
+
+        "Varanasi": [
+            "Banaras Hindu University",
+            "Institute of Medical Sciences, BHU",
+            "Mahatma Gandhi Kashi Vidyapith"
+        ],
+
+        "Kanpur Nagar": [
+            "Indian Institute of Technology Kanpur",
+            "Chhatrapati Shahu Ji Maharaj University",
+            "GSVM Medical College"
+        ],
+
+
+        /* =========================
+           MADHYA PRADESH
+        ========================= */
+
+        "Bhopal": [
+            "All India Institute of Medical Sciences Bhopal",
+            "Barkatullah University",
+            "Maulana Azad National Institute of Technology"
+        ],
+
+        "Indore": [
+            "Indian Institute of Technology Indore",
+            "Devi Ahilya Vishwavidyalaya",
+            "MGM Medical College"
+        ]
+
+    };
+
+
+
+    /* =================================================
+       DISTRICT → INSTITUTE
+    ================================================= */
+
+    if (districtSelect) {
+
+        districtSelect.addEventListener(
+            "change",
+            function () {
+
+                const selectedDistrict = this.value;
+
+                instituteSelect.innerHTML = `
+                    <option value="">
+                        Select Institute
+                    </option>
+                `;
+
+                const institutes =
+                    institutesByDistrict[selectedDistrict] || [];
+
+
+                institutes.forEach(
+                    function (institute) {
+
+                        const option =
+                            document.createElement("option");
+
+                        option.value = institute;
+
+                        option.textContent = institute;
+
+                        instituteSelect.appendChild(option);
+
+                    }
+                );
+
+
+                /* If institute list is unavailable */
+
+                if (institutes.length === 0) {
+
+                    const option =
+                        document.createElement("option");
+
+                    option.value = "Other";
+
+                    option.textContent =
+                        "Other Institute";
+
+                    instituteSelect.appendChild(option);
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       VIEW DETAIL BUTTON
+    ================================================= */
+
+    const viewDetailButton =
+        document.getElementById(
+            "viewDetailButton"
+        );
+
+    if (viewDetailButton) {
+
+        viewDetailButton.addEventListener(
+            "click",
+            function () {
+
+                window.location.href =
+                    "/personal-details";
+
+            }
+        );
+
+    }
+
+</script>
+
+</body>
+
+</html>

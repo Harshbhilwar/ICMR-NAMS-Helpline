@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard - ICMR-NAMS</title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Bootstrap Icons -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Dashboard CSS -->
+
+    <link
+        rel="stylesheet"
+        href="/css/dashboard.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================================= -->
+    <!-- DASHBOARD WRAPPER -->
+    <!-- ================================================= -->
+
+    <div class="dashboard-wrapper">
+
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <aside class="dashboard-sidebar">
+
+
+            <!-- SIDEBAR TITLE -->
+
+            <div class="sidebar-title">
+
+                ICMR-NAMS
+
+            </div>
+
+
+            <!-- USER INFORMATION -->
+
+            <div class="sidebar-user">
+
+                <div class="user-id">
+
+                    User-ID:
+                    <strong>
+                        <%= user ? user._id : "Pending" %>
+                    </strong>
+
+                </div>
+
+
+                <div class="username">
+
+                    <%= user ? user.username : "Applicant" %>
+
+                </div>
+
+
+                <div class="email-verified">
+
+                    (Email Verified)
+
+                </div>
+
+            </div>
+
+
+            <!-- SEPARATOR -->
+
+            <div class="sidebar-separator"></div>
+
+
+            <!-- APPLICANT PROFILE -->
+
+            <div class="sidebar-section-title">
+
+                Applicant Profile
+
+            </div>
+
+
+            <div
+                class="sidebar-menu-item active"
+                id="applicantProfileToggle"
+            >
+
+            <i class="bi bi-person-fill"></i>
+
+                <span>Applicant Profile</span>
+
+            <i
+                class="bi bi-chevron-down menu-arrow"
+                id="applicantProfileArrow"
+            ></i>
+
+           </div>
+
+
+           <div
+              class="sidebar-submenu-item"
+              id="personalDetailsMenu"
+            >
+
+               <i class="bi bi-circle"></i>
+
+               <a href="/personal-details">
+                   Personal Details
+               </a>
+
+            </div>
+
+
+            <!-- EXPERT HELP -->
+
+<div
+    class="sidebar-menu-item"
+    id="expertHelpToggle"
+>
+
+    <i class="bi bi-person-workspace"></i>
+
+    <span>Expert Help</span>
+
+    <i
+        class="bi bi-chevron-right menu-arrow"
+        id="expertHelpArrow"
+    ></i>
+
+</div>
+
+
+<div
+    class="sidebar-submenu-item submenu-hidden"
+    id="viewApplySessionMenu"
+>
+
+    <i class="bi bi-circle"></i>
+
+    <a href="/view-apply-session">
+        View/Apply Session
+    </a>
+
+</div>
+
+
+            <!-- RESOURCE FACULTY -->
+
+            <div class="sidebar-menu-item standalone">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+                <span>Resource Faculty</span>
+
+            </div>
+
+
+            <!-- USER GUIDE -->
+
+            <div class="sidebar-menu-item standalone">
+
+                <i class="bi bi-download"></i>
+
+                <span>User Guide (PDF)</span>
+
+            </div>
+
+
+            <!-- LOGOUT -->
+
+            <a
+                href="/logout"
+                class="dashboard-logout"
+            >
+
+                <span>Logout</span>
+
+                <i class="bi bi-box-arrow-right"></i>
+
+            </a>
+
+
+        </aside>
+
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <main class="dashboard-main">
+
+
+            <!-- ================================================= -->
+            <!-- TOP BAR -->
+            <!-- ================================================= -->
+
+            <div class="dashboard-topbar">
+
+
+                <button
+                    type="button"
+                    class="sidebar-toggle"
+                    id="sidebarToggle"
+                >
+
+                    <i class="bi bi-list"></i>
+
+                </button>
+
+
+                <span class="dashboard-page-title">
+
+                    Dashboard
+
+                </span>
+
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- TWO-STEP AUTHENTICATION SUCCESS MESSAGE -->
+            <!-- ================================================= -->
+
+            <% if (twoStepAuthSuccess) { %>
+
+                <div class="two-step-success-alert">
+
+                    <span>
+                        Your two-step authentication is successful.
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="two-step-close"
+                        onclick="this.parentElement.remove()"
+                        aria-label="Close"
+                    >
+
+                        ×
+
+                    </button>
+
+                </div>
+
+            <% } %>
+
+
+
+            <!-- ================================================= -->
+            <!-- DASHBOARD HOME -->
+            <!-- ================================================= -->
+
+            <section class="dashboard-home">
+
+
+                <!-- LOGOS -->
+
+                <div class="dashboard-logos">
+
+                    <img
+                        src="/images/icmr-logo.png"
+                        alt="Indian Council of Medical Research"
+                    >
+
+                    <img
+                        src="/images/nams-logo.png"
+                        alt="National Academy of Medical Sciences"
+                    >
+
+                </div>
+
+
+                <!-- HINDI TEXT -->
+
+                <div class="dashboard-hindi">
+
+                    भारतीय आयुर्विज्ञान अनुसंधान परिषद
+
+                </div>
+
+
+                <!-- ENGLISH TEXT -->
+
+                <div class="dashboard-english">
+
+                    Indian Council of Medical Research
+
+                </div>
+
+
+                <!-- WELCOME -->
+
+                <div class="dashboard-welcome">
+
+                    Welcome to
+
+                </div>
+
+
+                <!-- TITLE -->
+
+                <h1>
+
+                    ICMR-NAMS National Biostatistics Helpline
+
+                </h1>
+
+
+                <!-- LOGGED IN -->
+
+                <div class="logged-in-text">
+
+                    Logged in as
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                    <span>
+
+                        Applicant,
+
+                    </span>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ================================================= -->
+            <!-- DASHBOARD FOOTER -->
+            <!-- ================================================= -->
+
+            <footer class="dashboard-footer">
+
+                <div>
+
+                    Copyright © 2026
+
+                    <strong>
+                        Indian Council of Medical Research, IT Division.
+                    </strong>
+
+                    All rights reserved.
+
+                </div>
+
+
+                <div id="dashboardDateTime">
+
+                </div>
+
+            </footer>
+
+
+        </main>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ================================================= -->
+
+    <script>
+
+
+        /* ==============================================
+           SIDEBAR TOGGLE
+        ============================================== */
+
+        const sidebarToggle =
+            document.getElementById(
+                "sidebarToggle"
+            );
+
+
+        const dashboardWrapper =
+            document.querySelector(
+                ".dashboard-wrapper"
+            );
+
+
+        sidebarToggle.addEventListener(
+            "click",
+            () => {
+
+                dashboardWrapper.classList.toggle(
+                    "sidebar-collapsed"
+                );
+
+            }
+        );
+
+
+    /* ==============================================
+       APPLICANT PROFILE TOGGLE
+    ============================================== */
+
+    const applicantProfileToggle =
+        document.getElementById(
+            "applicantProfileToggle"
+        );
+
+    const personalDetailsMenu =
+        document.getElementById(
+            "personalDetailsMenu"
+        );
+
+    const applicantProfileArrow =
+        document.getElementById(
+            "applicantProfileArrow"
+        );
+
+
+    applicantProfileToggle.addEventListener(
+        "click",
+        () => {
+
+            personalDetailsMenu.classList.toggle(
+                "submenu-hidden"
+            );
+
+
+            if (
+                personalDetailsMenu.classList.contains(
+                    "submenu-hidden"
+                )
+            ) {
+
+                applicantProfileArrow.classList.remove(
+                    "bi-chevron-down"
+                );
+
+                applicantProfileArrow.classList.add(
+                    "bi-chevron-right"
+                );
+
+            } else {
+
+                applicantProfileArrow.classList.remove(
+                    "bi-chevron-right"
+                );
+
+                applicantProfileArrow.classList.add(
+                    "bi-chevron-down"
+                );
+
+            }
+
+        }
+    );
+
+
+
+    /* ==============================================
+       EXPERT HELP TOGGLE
+    ============================================== */
+
+    const expertHelpToggle =
+        document.getElementById(
+            "expertHelpToggle"
+        );
+
+    const viewApplySessionMenu =
+        document.getElementById(
+            "viewApplySessionMenu"
+        );
+
+    const expertHelpArrow =
+        document.getElementById(
+            "expertHelpArrow"
+        );
+
+
+    expertHelpToggle.addEventListener(
+        "click",
+        () => {
+
+            viewApplySessionMenu.classList.toggle(
+                "submenu-hidden"
+            );
+
+
+            if (
+                viewApplySessionMenu.classList.contains(
+                    "submenu-hidden"
+                )
+            ) {
+
+                expertHelpArrow.classList.remove(
+                    "bi-chevron-down"
+                );
+
+                expertHelpArrow.classList.add(
+                    "bi-chevron-right"
+                );
+
+            } else {
+
+                expertHelpArrow.classList.remove(
+                    "bi-chevron-right"
+                );
+
+                expertHelpArrow.classList.add(
+                    "bi-chevron-down"
+                );
+
+            }
+
+        }
+    );
+
+
+        /* ==============================================
+           DATE + TIME
+        ============================================== */
+
+        function updateDateTime() {
+
+            const now = new Date();
+
+
+            const options = {
+
+                weekday: "long",
+
+                year: "numeric",
+
+                month: "long",
+
+                day: "numeric"
+
+            };
+
+
+            const date =
+                now.toLocaleDateString(
+                    "en-IN",
+                    options
+                );
+
+
+            const time =
+                now.toLocaleTimeString(
+                    "en-IN",
+                    {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        second: "2-digit"
+                    }
+                );
+
+
+            document.getElementById(
+                "dashboardDateTime"
+            ).textContent =
+                `${date}, ${time}`;
+
+        }
+
+
+        updateDateTime();
+
+
+        setInterval(
+            updateDateTime,
+            1000
+        );
+
+    </script>
+
+
+</body>
+
+</html>
