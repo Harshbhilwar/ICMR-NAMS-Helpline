@@ -1267,3 +1267,1548 @@
 .two-step-close:hover {
     opacity: 1;
 }
+
+/* =========================================================
+   ABOUT US PAGE
+========================================================= */
+
+.about-page {
+    width: 100%;
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   ABOUT PAGE BANNER
+========================================================= */
+
+.about-page-banner {
+    width: 100%;
+    background: #344d7c;
+    height: 69px;
+    color: #ffffff;
+}
+
+.about-page-banner-container {
+    width: 100%;
+    max-width: 1250px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-page-banner h2 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.about-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 11px;
+}
+
+.about-breadcrumb a {
+    color: #b9c7dd;
+    text-decoration: none;
+}
+
+.about-breadcrumb a:hover {
+    color: #ffffff;
+}
+
+.about-breadcrumb span {
+    color: #b9c7dd;
+}
+
+.about-breadcrumb strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.about-content {
+    width: 100%;
+    background: #ffffff;
+}
+
+.about-container {
+    width: 100%;
+    max-width: 1050px;
+
+    margin: 0 auto;
+
+    padding:
+        30px 0
+        55px 0;
+}
+
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.about-main-heading {
+    display: inline-block;
+
+    margin: 0 0 20px 0;
+    padding-bottom: 7px;
+
+    border-bottom: 2px solid #2f6da8;
+
+    color: #354a68;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PROFILE CARDS
+========================================================= */
+
+.about-profile-row {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 26px;
+
+    margin-bottom: 26px;
+}
+
+
+.about-profile-card {
+    width: 237px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.15);
+
+    overflow: hidden;
+
+    text-align: center;
+}
+
+
+.about-profile-image {
+    width: 100%;
+    height: 230px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    overflow: hidden;
+}
+
+
+.about-profile-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+.about-profile-card:nth-child(2)
+.about-profile-image img {
+
+    object-fit: contain;
+
+}
+
+
+.about-profile-name {
+    padding-top: 6px;
+
+    color: #333333;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.about-profile-designation {
+    padding: 10px 8px 14px;
+
+    color: #111111;
+
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.about-description {
+    width: 100%;
+
+    margin-top: 22px;
+}
+
+
+.about-description p {
+    margin: 0 0 14px 0;
+
+    color: #111111;
+
+    font-size: 14px;
+
+    line-height: 1.35;
+
+    text-align: left;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .about-container {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .about-page-banner {
+        height: auto;
+        min-height: 65px;
+    }
+
+    .about-page-banner-container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+    }
+
+    .about-profile-row {
+        flex-wrap: wrap;
+    }
+
+    .about-profile-card {
+        width: 237px;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .about-profile-row {
+        flex-direction: column;
+    }
+
+    .about-profile-card {
+        width: 100%;
+        max-width: 237px;
+    }
+
+}
+
+/* =========================================================
+   COORDINATING TEAM PAGE
+   ========================================================= */
+
+.coordinating-page {
+    width: 100%;
+    background: #ffffff;
+}
+
+
+/* PAGE BANNER */
+
+.coordinating-page-banner {
+    width: 100%;
+    height: 69px;
+    background: #344d7c;
+    color: #ffffff;
+}
+
+.coordinating-page-banner-container {
+    width: 100%;
+    max-width: 1250px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.coordinating-page-banner h2 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+
+/* BREADCRUMB */
+
+.coordinating-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 11px;
+}
+
+.coordinating-breadcrumb a {
+    color: #b9c7dd;
+    text-decoration: none;
+}
+
+.coordinating-breadcrumb a:hover {
+    color: #ffffff;
+}
+
+.coordinating-breadcrumb span {
+    color: #b9c7dd;
+}
+
+.coordinating-breadcrumb strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+
+/* MAIN CONTENT */
+
+.coordinating-content {
+    width: 100%;
+    background: #ffffff;
+}
+
+.coordinating-container {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 30px 0 55px;
+}
+
+
+/* SECTION HEADINGS */
+
+.coordinating-section-heading {
+    display: inline-block;
+
+    margin: 0 0 20px;
+    padding-bottom: 7px;
+
+    border-bottom: 2px solid #2f6da8;
+
+    color: #354a68;
+
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.coordinating-team-heading {
+    margin-top: 17px;
+}
+
+
+/* TEAM GRID */
+
+.team-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    column-gap: 26px;
+    row-gap: 26px;
+
+    align-items: start;
+}
+
+
+/* TEAM CARD */
+
+.team-card {
+    min-height: 83px;
+
+    background: #ffffff;
+
+    border: 1px solid #d8dde3;
+    border-radius: 4px;
+
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+
+    text-align: center;
+
+    padding: 10px 7px 9px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+/* NAME */
+
+.team-name {
+    color: #354a68;
+
+    font-size: 14px;
+    line-height: 1.35;
+
+    font-weight: 700;
+
+    margin-bottom: 9px;
+}
+
+
+/* DESIGNATION */
+
+.team-designation {
+    color: #000000;
+
+    font-size: 13px;
+    line-height: 1.45;
+
+    font-weight: 400;
+
+    text-align: center;
+}
+
+
+/* EMAIL */
+
+.team-email {
+    color: #000000;
+
+    font-size: 13px;
+    line-height: 1.35;
+
+    margin-top: 1px;
+
+    text-align: center;
+
+    word-break: break-word;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+
+    .coordinating-container {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .coordinating-page-banner {
+        height: auto;
+        min-height: 69px;
+    }
+
+    .coordinating-page-banner-container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .coordinating-container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .team-card {
+        width: 100%;
+    }
+
+}
+
+/* =========================================================
+   CONTACT US PAGE
+   ========================================================= */
+
+.contact-page {
+    width: 100%;
+    background: #ffffff;
+}
+
+
+/* PAGE BANNER */
+
+.contact-page-banner {
+    width: 100%;
+    height: 69px;
+    background: #344d7c;
+    color: #ffffff;
+}
+
+.contact-page-banner-container {
+    width: 100%;
+    max-width: 1250px;
+    height: 100%;
+
+    margin: 0 auto;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact-page-banner h2 {
+    margin: 0;
+
+    font-size: 21px;
+    font-weight: 400;
+}
+
+
+/* BREADCRUMB */
+
+.contact-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 11px;
+}
+
+.contact-breadcrumb a {
+    color: #b9c7dd;
+    text-decoration: none;
+}
+
+.contact-breadcrumb a:hover {
+    color: #ffffff;
+}
+
+.contact-breadcrumb span {
+    color: #b9c7dd;
+}
+
+.contact-breadcrumb strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+
+/* MAIN CONTENT */
+
+.contact-content {
+    width: 100%;
+    background: #ffffff;
+}
+
+.contact-container {
+    width: 100%;
+    max-width: 1050px;
+
+    margin: 0 auto;
+    padding: 32px 0 55px;
+
+    display: grid;
+    grid-template-columns: 515px 1fr;
+
+    column-gap: 14px;
+
+    align-items: start;
+}
+
+
+/* MAP */
+
+.contact-map {
+    width: 515px;
+    height: 380px;
+
+    overflow: hidden;
+}
+
+.contact-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 380px;
+
+    border: 0;
+}
+
+
+/* CONTACT INFORMATION */
+
+.contact-information {
+    width: 100%;
+    padding-left: 0;
+}
+
+
+/* CONTACT HEADING */
+
+.contact-heading {
+    display: inline-block;
+
+    margin: 0 0 20px;
+    padding-bottom: 7px;
+
+    border-bottom: 2px solid #2f6da8;
+
+    color: #354a68;
+
+    font-size: 18px;
+    line-height: 1.2;
+
+    font-weight: 400;
+}
+
+
+/* CONTACT TEXT */
+
+.contact-details {
+    color: #000000;
+
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.contact-details p {
+    margin: 0 0 20px;
+}
+
+.contact-details strong {
+    font-weight: 700;
+}
+
+.contact-email {
+    margin-bottom: 21px !important;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+
+    .contact-container {
+        padding-left: 25px;
+        padding-right: 25px;
+
+        grid-template-columns: minmax(450px, 515px) 1fr;
+
+        column-gap: 14px;
+    }
+
+    .contact-map {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .contact-page-banner {
+        height: auto;
+        min-height: 69px;
+    }
+
+    .contact-page-banner-container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 8px;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+
+        row-gap: 30px;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .contact-map {
+        width: 100%;
+        height: 380px;
+    }
+
+    .contact-information {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .contact-map {
+        height: 320px;
+    }
+
+    .contact-map iframe {
+        height: 320px;
+    }
+
+    .contact-details {
+        font-size: 13px;
+    }
+
+}
+
+/* =========================================================
+   RESPONSIVE WEBSITE SYSTEM
+   ICMR-NAMS
+========================================================= */
+
+/* =========================================================
+   GLOBAL RESPONSIVE SAFETY
+========================================================= */
+
+html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION BUTTON
+========================================================= */
+
+.mobile-navbar-toggle {
+    display: none;
+    width: 34px;
+    height: 34px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    background: #343a40;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.mobile-navbar-toggle:hover {
+    background: #252a2e;
+}
+
+.nams-logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   LARGE TABLETS / SMALL LAPTOPS
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .top-bar {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .header-container {
+        padding: 0 15px;
+    }
+
+    .navigation-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .navigation-links {
+        gap: 20px;
+    }
+
+    .navigation-links a {
+        font-size: 13px;
+    }
+
+    .information-container {
+        padding-left: 25px;
+        padding-right: 25px;
+        gap: 25px;
+    }
+
+    .partner-container {
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 20px;
+    }
+
+    .partner-logo img {
+        max-width: 140px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    /* ---------- TOP BAR ---------- */
+
+    .top-bar {
+        height: auto;
+        min-height: 30px;
+        padding: 6px 15px;
+        font-size: 10px;
+        gap: 8px;
+    }
+
+    .top-bar-left {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .top-bar-right {
+        gap: 12px;
+        flex-shrink: 0;
+    }
+
+
+    /* ---------- HEADER ---------- */
+
+    .header-container {
+        min-height: 105px;
+        padding: 8px 12px;
+    }
+
+    .icmr-logo {
+        width: 105px;
+        height: 70px;
+    }
+
+    .nams-logo {
+        width: 78px;
+        height: 70px;
+    }
+
+    .organization-name {
+        font-size: 12px;
+        white-space: normal;
+        line-height: 1.25;
+    }
+
+    .header-center h1 {
+        font-size: 21px;
+        white-space: normal;
+        line-height: 1.15;
+    }
+
+
+    /* ---------- NAVIGATION ---------- */
+
+    .main-navigation {
+        position: relative;
+    }
+
+    .navigation-container {
+        min-height: 0;
+        padding: 0;
+    }
+
+    .mobile-navbar-toggle {
+        display: flex;
+    }
+
+    .main-navbar-collapse {
+        width: 100%;
+    }
+
+    .navigation-links {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #303030;
+        padding: 8px 12px;
+    }
+
+    .navigation-links a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 8px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .navigation-links a:last-child {
+        border-bottom: none;
+    }
+
+    .navigation-links a:hover {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .login-register-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 12px 12px;
+        min-height: 40px;
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+
+    /* ---------- HOME INFORMATION ---------- */
+
+    .information-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+
+    /* ---------- PARTNER LOGOS ---------- */
+
+    .partner-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .partner-logo {
+        flex: 0 0 calc(25% - 20px);
+        min-width: 130px;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    .footer-text {
+        white-space: normal;
+        line-height: 1.7;
+    }
+
+    .footer-policy {
+        margin-left: 20px;
+    }
+
+
+    /* ---------- CONTACT ---------- */
+
+    .contact-container {
+        width: 100%;
+    }
+
+
+    /* ---------- ABOUT ---------- */
+
+    .about-container {
+        width: 100%;
+    }
+
+
+    /* ---------- COORDINATING TEAM ---------- */
+
+    .coordinating-container {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* ---------- TOP BAR ---------- */
+
+    .top-bar {
+        min-height: 34px;
+        padding: 6px 10px;
+        justify-content: center;
+    }
+
+    .top-bar-left {
+        justify-content: center;
+        gap: 8px 14px;
+    }
+
+    .top-bar-right {
+        display: none;
+    }
+
+
+    /* ---------- HEADER ---------- */
+
+    .header-container {
+        min-height: 95px;
+        grid-template-columns: 1fr 1.6fr 1fr;
+        padding: 7px 8px;
+    }
+
+    .icmr-logo {
+        width: 82px;
+        height: 60px;
+    }
+
+    .nams-logo {
+        width: 68px;
+        height: 60px;
+    }
+
+    .organization-name {
+        font-size: 10px;
+        line-height: 1.25;
+    }
+
+    .header-center h1 {
+        font-size: 18px;
+        line-height: 1.15;
+    }
+
+    .mobile-navbar-toggle {
+        width: 32px;
+        height: 32px;
+        font-size: 19px;
+        margin-left: 7px;
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .hero-slider {
+        height: 300px;
+    }
+
+    .slider-arrow {
+        width: 38px;
+        height: 52px;
+        font-size: 20px;
+    }
+
+
+    /* ---------- BROWSER STRIP ---------- */
+
+    .browser-compatibility {
+        padding: 10px 15px;
+    }
+
+    .browser-compatibility p {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+
+    /* ---------- INFORMATION ---------- */
+
+    .information-section {
+        padding: 35px 0;
+    }
+
+    .information-container {
+        padding-left: 18px;
+        padding-right: 18px;
+        gap: 25px;
+    }
+
+    .information-content h2 {
+        font-size: 23px;
+        line-height: 1.3;
+    }
+
+    .information-content p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .announcement-header {
+        font-size: 17px;
+    }
+
+
+    /* ---------- PARTNER LOGOS ---------- */
+
+    .partner-section {
+        padding: 25px 0;
+    }
+
+    .partner-container {
+        padding: 0 12px;
+        gap: 15px;
+    }
+
+    .partner-logo {
+        flex: 0 0 calc(33.333% - 15px);
+        min-width: 90px;
+        height: 65px;
+    }
+
+    .partner-logo img {
+        max-width: 110px;
+        max-height: 55px;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    .footer-container {
+        padding: 12px 15px;
+    }
+
+    .footer-text {
+        font-size: 11px;
+        line-height: 1.7;
+        text-align: center;
+    }
+
+    .footer-policy {
+        display: block;
+        margin: 4px 0 0;
+    }
+
+
+    /* ---------- ABOUT ---------- */
+
+    .about-page-banner-container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .about-container {
+        padding: 25px 18px 45px;
+    }
+
+    .about-main-heading {
+        font-size: 17px;
+        line-height: 1.4;
+    }
+
+    .about-profile-row {
+        gap: 20px;
+    }
+
+    .about-profile-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .about-description p {
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+
+    /* ---------- COORDINATING TEAM ---------- */
+
+    .coordinating-page-banner-container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .coordinating-container {
+        padding: 25px 18px 45px;
+    }
+
+    .coordinating-section-heading {
+        font-size: 17px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .team-card {
+        width: 100%;
+        min-height: auto;
+        padding: 13px 10px;
+    }
+
+    .team-name {
+        font-size: 14px;
+    }
+
+    .team-designation,
+    .team-email {
+        font-size: 12px;
+    }
+
+
+    /* ---------- CONTACT ---------- */
+
+    .contact-page-banner-container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .contact-container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .contact-map {
+        width: 100%;
+    }
+
+    .contact-information {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    /* ---------- TOP BAR ---------- */
+
+    .top-bar {
+        font-size: 9px;
+    }
+
+    .top-bar-left {
+        gap: 5px 10px;
+        text-align: center;
+    }
+
+
+    /* ---------- HEADER ---------- */
+
+    .header-container {
+        grid-template-columns: 85px 1fr 85px;
+        min-height: 100px;
+    }
+
+    .header-left,
+    .header-right {
+        min-width: 0;
+    }
+
+    .icmr-logo {
+        width: 70px;
+        height: 52px;
+    }
+
+    .nams-logo {
+        width: 58px;
+        height: 52px;
+    }
+
+    .organization-name {
+        font-size: 9px;
+    }
+
+    .header-center h1 {
+        font-size: 16px;
+        line-height: 1.15;
+    }
+
+    .mobile-navbar-toggle {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+
+
+    /* ---------- NAVIGATION ---------- */
+
+    .navigation-links a {
+        min-height: 42px;
+        font-size: 14px;
+        padding-left: 12px;
+    }
+
+    .login-register-button {
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .hero-slider {
+        height: 220px;
+    }
+
+    .slider-arrow {
+        width: 32px;
+        height: 46px;
+        font-size: 18px;
+    }
+
+    .slider-dots {
+        bottom: 7px;
+    }
+
+
+    /* ---------- INFORMATION ---------- */
+
+    .information-section {
+        padding: 28px 0;
+    }
+
+    .information-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .information-content h2 {
+        font-size: 21px;
+    }
+
+    .information-content p {
+        font-size: 13px;
+        line-height: 1.65;
+    }
+
+    .announcement-header {
+        font-size: 16px;
+        padding: 11px 14px;
+    }
+
+    .announcement-body {
+        padding: 15px;
+    }
+
+
+    /* ---------- PARTNER ---------- */
+
+    .partner-logo {
+        flex: 0 0 calc(50% - 10px);
+        min-width: 100px;
+    }
+
+    .partner-logo img {
+        max-width: 105px;
+    }
+
+
+    /* ---------- LOGIN / REGISTER ---------- */
+
+    .login-card {
+        width: calc(100% - 24px);
+        max-width: 340px;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .ribbon-title {
+        min-width: 150px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 15px;
+    }
+
+    .ribbon-left,
+    .ribbon-right {
+        width: 25px;
+        height: 28px;
+    }
+
+    .login-logos {
+        gap: 18px;
+    }
+
+    .login-icmr-logo {
+        width: 80px;
+        height: 55px;
+    }
+
+    .login-nams-logo {
+        width: 62px;
+        height: 55px;
+    }
+
+    .original-password-note {
+        font-size: 13px;
+    }
+
+    .original-captcha-box {
+        font-size: 20px;
+        letter-spacing: 5px;
+    }
+
+
+    /* ---------- ABOUT ---------- */
+
+    .about-page-banner h2,
+    .coordinating-page-banner h2,
+    .contact-page-banner h2 {
+        font-size: 19px;
+    }
+
+    .about-breadcrumb,
+    .coordinating-breadcrumb,
+    .contact-breadcrumb {
+        font-size: 10px;
+    }
+
+    .about-profile-card {
+        max-width: 100%;
+    }
+
+
+    /* ---------- CONTACT ---------- */
+
+    .contact-map {
+        height: 300px;
+    }
+
+    .contact-map iframe {
+        height: 300px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .header-container {
+        grid-template-columns: 72px 1fr 72px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .icmr-logo {
+        width: 62px;
+        height: 48px;
+    }
+
+    .nams-logo {
+        width: 50px;
+        height: 48px;
+    }
+
+    .organization-name {
+        font-size: 8px;
+    }
+
+    .header-center h1 {
+        font-size: 14px;
+    }
+
+    .mobile-navbar-toggle {
+        width: 28px;
+        height: 28px;
+        margin-left: 4px;
+    }
+
+    .hero-slider {
+        height: 190px;
+    }
+
+    .partner-logo {
+        min-width: 85px;
+    }
+
+    .footer-text {
+        font-size: 10px;
+    }
+
+}
+
+/* =========================================================
+   NAVBAR FIX
+========================================================= */
+
+/* Desktop - show navbar */
+.main-navbar-collapse {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+/* Tablet + Mobile - use hamburger collapse */
+@media (max-width: 900px) {
+
+    .main-navbar-collapse {
+        width: 100%;
+        display: block !important;
+    }
+
+    .main-navbar-collapse:not(.show) {
+        display: none !important;
+    }
+
+}

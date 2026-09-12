@@ -26,7 +26,7 @@
 
     <div class="top-bar-right">
 
-        <span>
+        <span class="screen-reader-access">
             Screen Reader Access
         </span>
 
@@ -46,6 +46,7 @@
 
 </div>
 
+
 <!-- ==========================================
      MAIN ICMR-NAMS HEADER
 =========================================== -->
@@ -54,7 +55,7 @@
 
     <div class="header-container">
 
-        <!-- ICMR SIDE -->
+        <!-- ICMR -->
 
         <div class="header-side header-left">
 
@@ -82,15 +83,33 @@
         </div>
 
 
-        <!-- NAMS SIDE -->
+        <!-- NAMS -->
 
         <div class="header-side header-right">
 
-            <img
-                src="/images/nams-logo.png"
-                alt="National Academy of Medical Sciences"
-                class="nams-logo"
-            >
+            <div class="nams-logo-wrapper">
+
+                <img
+                    src="/images/nams-logo.png"
+                    alt="National Academy of Medical Sciences"
+                    class="nams-logo"
+                >
+
+                <!-- MOBILE MENU BUTTON -->
+
+                <button
+                    type="button"
+                    class="mobile-navbar-toggle"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbarCollapse"
+                    aria-controls="mainNavbarCollapse"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <i class="bi bi-list"></i>
+                </button>
+
+            </div>
 
             <div class="organization-name">
                 National Academy of Medical Sciences
@@ -102,6 +121,7 @@
 
 </header>
 
+
 <!-- ==========================================
      MAIN NAVIGATION
 =========================================== -->
@@ -110,46 +130,52 @@
 
     <div class="navigation-container">
 
+        <div
+            class="collapse main-navbar-collapse"
+            id="mainNavbarCollapse"
+        >
 
-        <div class="navigation-links">
+            <div class="navigation-links">
 
-            <a href="/">
-                Home
-            </a>
+                <a href="/">
+                    Home
+                </a>
 
-            <a href="/about-us">
-                About Us
-            </a>
+                <a href="/about-us">
+                    About Us
+                </a>
 
-            <a href="/resource-faculty">
-                Resource Faculty
-            </a>
+                <a href="#">
+                    Resource Faculty
+                </a>
 
-            <a href="/coordinating-team">
-                Coordinating Team
-            </a>
+                <a href="/coordinating-team">
+                    Coordinating Team
+                </a>
 
-            <a href="/user-guide">
-                User Guide
-            </a>
+                <a href="#">
+                    User Guide
+                </a>
 
-            <a href="/contact-us">
-                Contact Us
+                <a href="/contact-us">
+                    Contact Us
+                </a>
+
+            </div>
+
+
+            <a
+                href="/login"
+                class="login-register-button"
+            >
+
+                <i class="bi bi-box-arrow-in-right"></i>
+
+                Login/Register
+
             </a>
 
         </div>
-
-
-        <a
-            href="/login"
-            class="login-register-button"
-        >
-
-            <i class="bi bi-box-arrow-in-right"></i>
-
-            Login/Register
-
-        </a>
 
     </div>
 

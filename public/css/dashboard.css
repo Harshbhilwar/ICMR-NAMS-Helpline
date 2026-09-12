@@ -933,3 +933,474 @@ body {
     }
 
 }
+
+.dashboard-link {
+    color: #6884a5;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.dashboard-link:hover {
+    color: #087cff;
+    text-decoration: none;
+}
+
+/* =========================================================
+   RESPONSIVE DASHBOARD SYSTEM
+========================================================= */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .dashboard-sidebar {
+        width: 210px;
+        min-width: 210px;
+    }
+
+    .sidebar-title {
+        padding-left: 45px;
+    }
+
+    .sidebar-user {
+        padding-left: 45px;
+        padding-right: 12px;
+    }
+
+    .dashboard-topbar {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .dashboard-home {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .dashboard-footer {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE DASHBOARD
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* ---------- SIDEBAR ---------- */
+
+    .dashboard-sidebar {
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        left: 0;
+
+        width: 225px;
+        min-width: 225px;
+        height: 100vh;
+
+        transform: translateX(0);
+        transition: transform 0.3s ease;
+
+        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.25);
+    }
+
+
+    /* When collapsed */
+
+    .dashboard-wrapper.sidebar-collapsed .dashboard-sidebar {
+        width: 225px;
+        min-width: 225px;
+
+        transform: translateX(-100%);
+
+        overflow: hidden;
+    }
+
+
+    /* ---------- MAIN ---------- */
+
+    .dashboard-main {
+        width: 100%;
+        min-width: 0;
+    }
+
+
+    /* ---------- TOPBAR ---------- */
+
+    .dashboard-topbar {
+        height: 51px;
+        padding: 0 12px;
+        gap: 15px;
+    }
+
+    .sidebar-toggle {
+        font-size: 22px;
+        min-width: 28px;
+    }
+
+    .dashboard-page-title {
+        font-size: 14px;
+    }
+
+
+    /* ---------- DASHBOARD HOME ---------- */
+
+    .dashboard-home {
+        top: 51px;
+        bottom: 58px;
+
+        padding: 25px 15px 30px;
+
+        overflow-x: hidden;
+    }
+
+    .dashboard-logos {
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+
+    .dashboard-logos img {
+        height: 75px;
+        max-width: 42%;
+    }
+
+    .dashboard-hindi {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .dashboard-english {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .dashboard-welcome {
+        margin-top: 25px;
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .dashboard-home h1 {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .logged-in-text {
+        margin-top: 22px;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+
+    /* ---------- SUCCESS MESSAGE ---------- */
+
+    .dashboard-home .alert {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+
+    /* ---------- DASHBOARD FOOTER ---------- */
+
+    .dashboard-footer {
+        height: auto;
+        min-height: 58px;
+
+        padding: 8px 12px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 3px;
+
+        text-align: center;
+
+        font-size: 10px;
+        line-height: 1.4;
+    }
+
+}
+
+
+/* =========================================================
+   PERSONAL DETAILS MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .personal-details-content {
+        top: 51px;
+        bottom: 58px;
+
+        padding: 0 8px 20px;
+
+        overflow-x: hidden;
+    }
+
+    .personal-details-heading {
+        min-height: 45px;
+        height: auto;
+
+        padding: 11px 10px;
+
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .personal-details-card {
+        padding: 12px;
+        overflow-x: hidden;
+    }
+
+
+    /* Bootstrap-style responsive rows */
+
+    .personal-details-card .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .personal-details-card [class*="col-"] {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    /* Long values */
+
+    .personal-details-card,
+    .personal-details-card * {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .add-personal-detail-button {
+        max-width: 100%;
+        white-space: normal;
+        text-align: center;
+    }
+
+}
+
+
+/* =========================================================
+   ADD PERSONAL DETAILS MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .add-personal-details-content {
+        top: 51px;
+        bottom: 58px;
+
+        padding: 0 8px 25px;
+
+        overflow-x: hidden;
+    }
+
+    .personal-form-title {
+        padding: 11px 13px;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .personal-form-card {
+        padding: 13px;
+        overflow-x: hidden;
+    }
+
+    .personal-form-section-title {
+        line-height: 1.4;
+        padding: 7px;
+    }
+
+    .personal-form-group {
+        margin-bottom: 14px;
+    }
+
+    .personal-form-group label {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .personal-form-group input,
+    .personal-form-group select {
+        width: 100%;
+        min-width: 0;
+        height: 38px;
+    }
+
+    .personal-form-buttons {
+        flex-wrap: wrap;
+    }
+
+    .personal-blue-button {
+        min-height: 38px;
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
+}
+
+
+/* =========================================================
+   SESSION PAGE MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .session-page {
+        top: 51px;
+        bottom: 58px;
+
+        width: 100%;
+
+        padding: 20px 15px 35px;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .session-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .session-header {
+        font-size: 14px;
+        line-height: 1.4;
+        padding: 11px 13px;
+        margin-bottom: 18px;
+    }
+
+    .session-field {
+        margin-bottom: 17px;
+    }
+
+    .session-field label {
+        font-size: 12px;
+        line-height: 1.45;
+    }
+
+    .session-field input,
+    .session-field select,
+    .session-field textarea {
+        width: 100%;
+        max-width: 100%;
+        font-size: 13px;
+    }
+
+    .session-field input,
+    .session-field select {
+        height: 40px;
+    }
+
+    .session-field textarea {
+        min-height: 105px;
+    }
+
+    .session-buttons {
+        flex-wrap: wrap;
+        margin-top: 25px;
+        gap: 8px;
+    }
+
+    .session-submit-button,
+    .session-back-button {
+        min-height: 40px;
+        padding: 9px 20px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE SESSION
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .session-page {
+        padding: 15px 10px 30px;
+    }
+
+    .session-header {
+        font-size: 13px;
+        padding: 10px 11px;
+    }
+
+    .session-field label {
+        font-size: 12px;
+    }
+
+    .session-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .session-submit-button,
+    .session-back-button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE SIDEBAR CONTENT
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .dashboard-sidebar {
+        width: 235px;
+        min-width: 235px;
+    }
+
+    .dashboard-wrapper.sidebar-collapsed .dashboard-sidebar {
+        width: 235px;
+        min-width: 235px;
+    }
+
+    .sidebar-title {
+        padding-left: 45px;
+    }
+
+    .sidebar-user {
+        padding-left: 45px;
+        padding-right: 15px;
+    }
+
+    .sidebar-menu-item {
+        font-size: 12px;
+    }
+
+    .sidebar-submenu-item {
+        font-size: 12px;
+    }
+
+    .dashboard-logout {
+        font-size: 12px;
+    }
+
+}

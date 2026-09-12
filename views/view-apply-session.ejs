@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        View/Apply Session - ICMR-NAMS
+    </title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Bootstrap Icons -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Dashboard CSS -->
+
+    <link
+        rel="stylesheet"
+        href="/css/dashboard.css"
+    >
+
+
+    <style>
+
+        /* =================================================
+           SESSION PAGE
+        ================================================= */
+
+        .session-page {
+
+            position: absolute;
+
+            top: 51px;
+            left: 0;
+            right: 0;
+            bottom: 50px;
+
+            overflow-y: auto;
+
+            background: #ffffff;
+
+            padding: 25px 28px 40px;
+
+        }
+
+
+        .session-container {
+
+            width: 100%;
+
+            max-width: 1050px;
+
+            margin: 0 auto;
+
+        }
+
+
+        /* =================================================
+           HEADER
+        ================================================= */
+
+        .session-header {
+
+            width: 100%;
+
+            background: #5d4d3e;
+
+            color: #ffffff;
+
+            padding: 11px 18px;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            border-radius: 3px 3px 0 0;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        /* =================================================
+           FORM
+        ================================================= */
+
+        .session-form {
+
+            width: 100%;
+
+        }
+
+
+        .session-field {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .session-field label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #333333;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        .required-star {
+
+            color: #dc3545;
+
+            margin-left: 2px;
+
+        }
+
+
+        .session-field input,
+        .session-field select,
+        .session-field textarea {
+
+            width: 100%;
+
+            border: 1px solid #ced4da;
+
+            border-radius: 4px;
+
+            padding: 9px 12px;
+
+            font-size: 13px;
+
+            color: #333333;
+
+            background: #ffffff;
+
+            outline: none;
+
+        }
+
+
+        .session-field input {
+
+            height: 39px;
+
+        }
+
+
+        .session-field select {
+
+            height: 39px;
+
+        }
+
+
+        .session-field textarea {
+
+            min-height: 95px;
+
+            resize: vertical;
+
+        }
+
+
+        .session-field input:focus,
+        .session-field select:focus,
+        .session-field textarea:focus {
+
+            border-color: #80bdff;
+
+            box-shadow:
+                0 0 0 0.15rem
+                rgba(0, 123, 255, 0.10);
+
+        }
+
+
+        .session-field input[readonly] {
+
+            background: #f8f9fa;
+
+            color: #555555;
+
+        }
+
+
+        .session-field input::placeholder,
+        .session-field textarea::placeholder {
+
+            color: #999999;
+
+        }
+
+
+        /* =================================================
+           BUTTONS
+        ================================================= */
+
+        .session-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 30px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .session-submit-button {
+
+            border: none;
+
+            background: #087cff;
+
+            color: #ffffff;
+
+            border-radius: 4px;
+
+            padding: 9px 24px;
+
+            font-size: 13px;
+
+            cursor: pointer;
+
+        }
+
+
+        .session-submit-button:hover {
+
+            background: #066edb;
+
+        }
+
+
+        .session-back-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-decoration: none;
+
+            background: #6c757d;
+
+            color: #ffffff;
+
+            border-radius: 4px;
+
+            padding: 9px 24px;
+
+            font-size: 13px;
+
+        }
+
+
+        .session-back-button:hover {
+
+            background: #5c636a;
+
+            color: #ffffff;
+
+        }
+
+
+        /* =================================================
+           TOP DASHBOARD LINK
+        ================================================= */
+
+        .dashboard-link {
+
+            color: #6884a5;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+        }
+
+
+        .dashboard-link:hover {
+
+            color: #4d6d91;
+
+            text-decoration: none;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard-wrapper">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================= -->
+
+    <aside class="dashboard-sidebar">
+
+
+        <!-- SIDEBAR TITLE -->
+
+        <div class="sidebar-title">
+
+            ICMR-NAMS
+
+        </div>
+
+
+        <!-- USER INFORMATION -->
+
+        <div class="sidebar-user">
+
+            <div class="user-id">
+
+                User-ID:
+
+                <strong>
+
+                    <%= user ? user._id : "Pending" %>
+
+                </strong>
+
+            </div>
+
+
+            <div class="username">
+
+                <%= user ? user.username : "Applicant" %>
+
+            </div>
+
+
+            <div class="email-verified">
+
+                (Email Verified)
+
+            </div>
+
+        </div>
+
+
+        <!-- SEPARATOR -->
+
+        <div class="sidebar-separator"></div>
+
+
+        <!-- =================================================
+             APPLICANT PROFILE
+        ================================================= -->
+
+        <div class="sidebar-section-title">
+
+            Applicant Profile
+
+        </div>
+
+
+        <div
+            class="sidebar-menu-item"
+            id="applicantProfileToggle"
+        >
+
+            <i class="bi bi-person-fill"></i>
+
+            <span>
+
+                Applicant Profile
+
+            </span>
+
+            <i
+                class="bi bi-chevron-right menu-arrow"
+                id="applicantProfileArrow"
+            ></i>
+
+        </div>
+
+
+        <div
+            class="sidebar-submenu-item submenu-hidden"
+            id="personalDetailsMenu"
+        >
+
+            <i class="bi bi-circle"></i>
+
+            <a href="/personal-details">
+
+                Personal Details
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             EXPERT HELP
+        ================================================= -->
+
+        <div
+            class="sidebar-menu-item active"
+            id="expertHelpToggle"
+        >
+
+            <i class="bi bi-person-workspace"></i>
+
+            <span>
+
+                Expert Help
+
+            </span>
+
+            <i
+                class="bi bi-chevron-down menu-arrow"
+                id="expertHelpArrow"
+            ></i>
+
+        </div>
+
+
+        <!-- VIEW/APPLY SESSION -->
+
+        <div
+            class="sidebar-submenu-item"
+            id="viewApplySessionMenu"
+        >
+
+            <i class="bi bi-circle"></i>
+
+            <a href="/view-apply-session">
+
+                View/Apply Session
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             RESOURCE FACULTY
+        ================================================= -->
+
+        <div class="sidebar-menu-item standalone">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            <span>
+
+                Resource Faculty
+
+            </span>
+
+        </div>
+
+
+        <!-- =================================================
+             USER GUIDE
+        ================================================= -->
+
+        <div class="sidebar-menu-item standalone">
+
+            <i class="bi bi-download"></i>
+
+            <span>
+
+                User Guide (PDF)
+
+            </span>
+
+        </div>
+
+
+        <!-- =================================================
+             LOGOUT
+        ================================================= -->
+
+        <a
+            href="/logout"
+            class="dashboard-logout"
+        >
+
+            <span>
+
+                Logout
+
+            </span>
+
+            <i class="bi bi-box-arrow-right"></i>
+
+        </a>
+
+
+    </aside>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================= -->
+
+    <main class="dashboard-main">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================= -->
+
+        <div class="dashboard-topbar">
+
+
+            <!-- HAMBURGER -->
+
+            <button
+                type="button"
+                class="sidebar-toggle"
+                id="sidebarToggle"
+            >
+
+                <i class="bi bi-list"></i>
+
+            </button>
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="/dashboard"
+                class="dashboard-page-title dashboard-link"
+            >
+
+                Dashboard
+
+            </a>
+
+
+        </div>
+
+
+        <!-- =================================================
+             SESSION FORM
+        ================================================= -->
+
+        <section class="session-page">
+
+
+            <div class="session-container">
+
+
+                <!-- PAGE HEADER -->
+
+                <div class="session-header">
+
+                    ICMR-NAMS National Biostatistics Helpline
+
+                </div>
+
+
+                <!-- FORM -->
+
+                <form
+                    action="/view-apply-session"
+                    method="POST"
+                    class="session-form"
+                >
+
+
+                    <!-- =================================================
+                         USER NAME
+                    ================================================= -->
+
+                    <div class="session-field">
+
+                        <label>
+
+                            User Name
+
+                            <span class="required-star">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            name="username"
+                            value="<%= user.username %>"
+                            readonly
+                        >
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EMAIL
+                    ================================================= -->
+
+                    <div class="session-field">
+
+                        <label>
+
+                            Email Address
+
+                            <span class="required-star">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="email"
+                            name="email"
+                            value="<%= user.email %>"
+                            readonly
+                        >
+
+                    </div>
+
+
+                    <!-- =================================================
+                         INSTITUTE
+                    ================================================= -->
+
+                    <div class="session-field">
+
+                        <label>
+
+                            Institute Name &amp; Address
+
+                            <span class="required-star">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            name="instituteName"
+                            placeholder="Institute Name & Address"
+                            value="<%= user.institute || '' %>"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SPECIALITY
+                    ================================================= -->
+
+                    <div class="session-field">
+
+                        <label>
+
+                            Speciality Name
+
+                            <span class="required-star">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            name="specialityName"
+                            placeholder="Speciality Name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- =================================================
+                         LANGUAGE
+                    ================================================= -->
+
+                    <div class="session-field">
+
+                        <label>
+
+                            Language preferred
+
+                            <span class="required-star">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            name="preferredLanguage"
+                            placeholder="Language preferred"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- =================================================
+                         RESEARCH QUESTION
+                    ================================================= -->
+
+                    <div class="session-field">
+
+                        <label>
+
+                            Research question
+
+                            <span class="required-star">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <textarea
+                            name="researchQuestion"
+                            placeholder="Enter Research question"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         PRIMARY OBJECTIVE
+                    ================================================= -->
+
+                    <div class="session-field">
+
+                        <label>
+
+                            Primary objective
+
+                            <span class="required-star">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <textarea
+                            name="primaryObjective"
+                            placeholder="Enter Objective of the Study"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         TYPE OF STUDY
+                    ================================================= -->
+
+                    <div class="session-field">
+
+                        <label>
+
+                            Type of Study
+
+                            <span class="required-star">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <select
+                            name="studyType"
+                            required
+                        >
+
+                            <option value="">
+
+                                Select type of study
+
+                            </option>
+
+
+                            <option value="Cross-sectional Study">
+
+                                Cross-sectional Study
+
+                            </option>
+
+
+                            <option value="Case-control Study">
+
+                                Case-control Study
+
+                            </option>
+
+
+                            <option value="Cohort Study">
+
+                                Cohort Study
+
+                            </option>
+
+
+                            <option value="Clinical Trial">
+
+                                Clinical Trial
+
+                            </option>
+
+
+                            <option value="Diagnostic Study">
+
+                                Diagnostic Study
+
+                            </option>
+
+
+                            <option value="Systematic Review">
+
+                                Systematic Review
+
+                            </option>
+
+
+                            <option value="Meta-analysis">
+
+                                Meta-analysis
+
+                            </option>
+
+
+                            <option value="Other">
+
+                                Other
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SAMPLING QUESTION
+                    ================================================= -->
+
+                    <div class="session-field">
+
+                        <label>
+
+                            Please write your query regarding
+                            Sampling/Sample size estimation
+
+                            <span class="required-star">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <textarea
+                            name="samplingQuestion"
+                            placeholder="Enter your Questions for which clarification is required from expert"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BUTTONS
+                    ================================================= -->
+
+                    <div class="session-buttons">
+
+
+                        <button
+                            type="submit"
+                            class="session-submit-button"
+                        >
+
+                            Submit
+
+                        </button>
+
+
+                        <a
+                            href="/dashboard"
+                            class="session-back-button"
+                        >
+
+                            Go back
+
+                        </a>
+
+
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================= -->
+
+        <footer class="dashboard-footer">
+
+
+            <div>
+
+                Copyright © 2026
+
+                <strong>
+
+                    Indian Council of Medical Research, IT Division.
+
+                </strong>
+
+                All rights reserved.
+
+            </div>
+
+
+            <div id="dashboardDateTime"></div>
+
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+<!-- =================================================
+     JAVASCRIPT
+================================================= -->
+
+<script>
+
+
+    /* =================================================
+       SIDEBAR COLLAPSE
+    ================================================= */
+
+    const sidebarToggle =
+        document.getElementById(
+            "sidebarToggle"
+        );
+
+
+    const dashboardWrapper =
+        document.querySelector(
+            ".dashboard-wrapper"
+        );
+
+
+    if (
+        sidebarToggle &&
+        dashboardWrapper
+    ) {
+
+        sidebarToggle.addEventListener(
+            "click",
+            function () {
+
+                dashboardWrapper.classList.toggle(
+                    "sidebar-collapsed"
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       APPLICANT PROFILE TOGGLE
+    ================================================= */
+
+    const applicantProfileToggle =
+        document.getElementById(
+            "applicantProfileToggle"
+        );
+
+
+    const personalDetailsMenu =
+        document.getElementById(
+            "personalDetailsMenu"
+        );
+
+
+    const applicantProfileArrow =
+        document.getElementById(
+            "applicantProfileArrow"
+        );
+
+
+    if (
+        applicantProfileToggle &&
+        personalDetailsMenu &&
+        applicantProfileArrow
+    ) {
+
+        applicantProfileToggle.addEventListener(
+            "click",
+            function () {
+
+
+                personalDetailsMenu.classList.toggle(
+                    "submenu-hidden"
+                );
+
+
+                if (
+                    personalDetailsMenu.classList.contains(
+                        "submenu-hidden"
+                    )
+                ) {
+
+                    applicantProfileArrow.classList.remove(
+                        "bi-chevron-down"
+                    );
+
+
+                    applicantProfileArrow.classList.add(
+                        "bi-chevron-right"
+                    );
+
+                } else {
+
+                    applicantProfileArrow.classList.remove(
+                        "bi-chevron-right"
+                    );
+
+
+                    applicantProfileArrow.classList.add(
+                        "bi-chevron-down"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       EXPERT HELP TOGGLE
+    ================================================= */
+
+    const expertHelpToggle =
+        document.getElementById(
+            "expertHelpToggle"
+        );
+
+
+    const viewApplySessionMenu =
+        document.getElementById(
+            "viewApplySessionMenu"
+        );
+
+
+    const expertHelpArrow =
+        document.getElementById(
+            "expertHelpArrow"
+        );
+
+
+    if (
+        expertHelpToggle &&
+        viewApplySessionMenu &&
+        expertHelpArrow
+    ) {
+
+        expertHelpToggle.addEventListener(
+            "click",
+            function () {
+
+
+                viewApplySessionMenu.classList.toggle(
+                    "submenu-hidden"
+                );
+
+
+                if (
+                    viewApplySessionMenu.classList.contains(
+                        "submenu-hidden"
+                    )
+                ) {
+
+                    expertHelpArrow.classList.remove(
+                        "bi-chevron-down"
+                    );
+
+
+                    expertHelpArrow.classList.add(
+                        "bi-chevron-right"
+                    );
+
+                } else {
+
+                    expertHelpArrow.classList.remove(
+                        "bi-chevron-right"
+                    );
+
+
+                    expertHelpArrow.classList.add(
+                        "bi-chevron-down"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       DATE + TIME
+    ================================================= */
+
+    function updateDateTime() {
+
+        const now = new Date();
+
+
+        const options = {
+
+            weekday: "long",
+
+            year: "numeric",
+
+            month: "long",
+
+            day: "numeric"
+
+        };
+
+
+        const date =
+            now.toLocaleDateString(
+                "en-IN",
+                options
+            );
+
+
+        const time =
+            now.toLocaleTimeString(
+                "en-IN",
+                {
+
+                    hour: "2-digit",
+
+                    minute: "2-digit",
+
+                    second: "2-digit"
+
+                }
+            );
+
+
+        const dateTimeElement =
+            document.getElementById(
+                "dashboardDateTime"
+            );
+
+
+        if (dateTimeElement) {
+
+            dateTimeElement.textContent =
+                `${date}, ${time}`;
+
+        }
+
+    }
+
+
+    updateDateTime();
+
+
+    setInterval(
+        updateDateTime,
+        1000
+    );
+
+
+</script>
+
+
+</body>
+
+</html>

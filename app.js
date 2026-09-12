@@ -3,9 +3,11 @@ require("dotenv").config();
 const dns = require("dns");
 
 dns.setServers([
-    "8.8.8.8",
-    "1.1.1.1"
+    "1.1.1.1",
+    "8.8.8.8"
 ]);
+
+dns.setDefaultResultOrder("ipv4first");
 
 const express = require("express");
 const app = express();
@@ -20,6 +22,7 @@ const { sendOTP } = require("./utils/mailer");
 
 const OTP = require("./models/OTP");
 const User = require("./models/User");
+const ResearchQuery = require("./models/ResearchQuery");
 
 
 /* =====================================================
@@ -188,6 +191,40 @@ app.get(
 
     }
 );
+
+/* =====================================================
+   ABOUT US PAGE
+===================================================== */
+
+app.get("/about-us", (req, res) => {
+    res.render("about-us", {
+        title: "About Us - ICMR-NAMS",
+        layout: "layouts/boilerplate"
+    });
+});
+
+/* =====================================================
+   COORDINATING TEAM PAGE
+===================================================== */
+
+app.get("/coordinating-team", (req, res) => {
+    res.render("coordinating-team", {
+        title: "Coordinating Team - ICMR-NAMS",
+        layout: "layouts/boilerplate"
+    });
+});
+
+
+/* =====================================================
+   COORDINATING TEAM PAGE
+===================================================== */
+
+app.get("/contact-us", (req, res) => {
+    res.render("contact-us", {
+        title: "Contact Us - ICMR-NAMS",
+        layout: "layouts/boilerplate"
+    });
+});
 
 
 /* =====================================================
@@ -957,6 +994,188 @@ app.post("/personal-details/save", async (req, res) => {
 });
 
 /* =====================================================
+   VIEW / APPLY SESSION
+===================================================== */
+
+app.get(
+    "/view-apply-session",
+    async (req, res) => {
+
+        try {
+
+            // Check login
+            if (!req.session.userId) {
+                return res.redirect("/login");
+            }
+
+            // Find logged-in user
+            const user = await User.findById(
+                req.session.userId
+            );
+
+            if (!user) {
+
+                req.session.destroy(() => {});
+
+                return res.redirect("/login");
+            }
+
+            // Show View / Apply Session page
+            return res.render(
+                "view-apply-session",
+                {
+                    title:
+                        "View/Apply Session - ICMR-NAMS",
+
+                    user: user,
+
+                    layout: false
+                }
+            );
+
+        } catch (error) {
+
+            console.error(
+                "View/Apply Session Error:",
+                error
+            );
+
+            return res.status(500).send(
+                "Unable to load session application."
+            );
+        }
+    }
+);
+
+
+/* =====================================================
+   SUBMIT RESEARCH QUERY
+===================================================== */
+
+app.post(
+    "/view-apply-session",
+    async (req, res) => {
+
+        try {
+
+            // Check login
+            if (!req.session.userId) {
+                return res.redirect("/login");
+            }
+
+            // Find logged-in user
+            const user = await User.findById(
+                req.session.userId
+            );
+
+            if (!user) {
+
+                req.session.destroy(() => {});
+
+                return res.redirect("/login");
+            }
+
+
+            // Get form data
+            const {
+                instituteName,
+                specialityName,
+                preferredLanguage,
+                researchQuestion,
+                primaryObjective,
+                studyType,
+                samplingQuestion
+            } = req.body;
+
+
+            // Validate all required fields
+            if (
+                !instituteName ||
+                !specialityName ||
+                !preferredLanguage ||
+                !researchQuestion ||
+                !primaryObjective ||
+                !studyType ||
+                !samplingQuestion
+            ) {
+
+                return res.status(400).send(
+                    "Please fill all required session details."
+                );
+            }
+
+
+            // Create research query
+            const researchQuery =
+                new ResearchQuery({
+
+                    researcher:
+                        user._id,
+
+                    username:
+                        user.username,
+
+                    email:
+                        user.email,
+
+                    instituteName:
+                        instituteName.trim(),
+
+                    specialityName:
+                        specialityName.trim(),
+
+                    preferredLanguage:
+                        preferredLanguage.trim(),
+
+                    researchQuestion:
+                        researchQuestion.trim(),
+
+                    primaryObjective:
+                        primaryObjective.trim(),
+
+                    studyType:
+                        studyType.trim(),
+
+                    samplingQuestion:
+                        samplingQuestion.trim(),
+
+                    status:
+                        "pending"
+                });
+
+
+            // Save to MongoDB
+            await researchQuery.save();
+
+
+            console.log(
+                "Research query submitted successfully:",
+                researchQuery._id
+            );
+
+
+            // For now return to dashboard
+            // Next step will be Select Expert
+            return res.redirect(
+                "/dashboard"
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Submit Research Query Error:",
+                error
+            );
+
+            return res.status(500).send(
+                "Unable to submit your research query."
+            );
+        }
+    }
+);
+
+/* =====================================================
    LOGOUT
 ===================================================== */
 
@@ -996,7 +1215,7 @@ app.get(
                  */
 
                 return res.redirect(
-                    "/login"
+                    "/"
                 );
 
             }
