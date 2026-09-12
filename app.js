@@ -22,9 +22,6 @@ const OTP = require("./models/OTP");
 const User = require("./models/User");
 
 
-const PORT = 8080;
-
-
 /* =====================================================
    EJS CONFIGURATION
 ===================================================== */
@@ -1669,13 +1666,8 @@ app.post(
    SERVER
 ===================================================== */
 
-app.listen(
-    PORT,
-    () => {
+const PORT = process.env.PORT || 8080;
 
-        console.log(
-            `Server running at http://localhost:${PORT}`
-        );
-
-    }
-);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
+});
