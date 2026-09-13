@@ -14,6 +14,9 @@ body {
     height: 100%;
 
     font-family: Arial, Helvetica, sans-serif;
+
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -150,27 +153,94 @@ body {
 
     gap: 12px;
 
-    background: rgba(255, 255, 255, 0.08);
+    /*
+       IMPORTANT:
+       Transparent in normal state.
+       Background appears ONLY on hover.
+    */
+    background: transparent;
 
     border-radius: 4px;
 
     font-size: 13px;
 
     cursor: pointer;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
 }
 
+
+/*
+   Active item should ALSO remain transparent.
+   This prevents permanent highlighting.
+*/
 .sidebar-menu-item.active {
-    background: rgba(255, 255, 255, 0.08);
+    background: transparent;
+
+    color: #ffffff;
 }
 
+
+/*
+   HOVER EFFECT
+*/
+.sidebar-menu-item:hover {
+    background: #6f5138;
+
+    color: #ffffff;
+
+    transform: translateX(4px);
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/*
+   Icons
+*/
 .sidebar-menu-item i:first-child {
     font-size: 14px;
+
+    transition:
+        transform 0.2s ease;
 }
 
+
+/*
+   Icon hover
+*/
+.sidebar-menu-item:hover i:first-child {
+    transform: scale(1.08);
+}
+
+
+/*
+   Arrow
+*/
 .menu-arrow {
     margin-left: auto;
 
     font-size: 12px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+/*
+   Slight arrow movement on hover
+*/
+.sidebar-menu-item:hover .menu-arrow {
+    transform: translateX(2px);
 }
 
 
@@ -191,10 +261,50 @@ body {
     color: #eeeeee;
 
     font-size: 13px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
 }
 
+
+/*
+   SUBMENU HOVER
+*/
+.sidebar-submenu-item:hover {
+    background: #6f5138;
+
+    color: #ffffff;
+
+    transform: translateX(4px);
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/*
+   Submenu icon
+*/
 .sidebar-submenu-item i {
     font-size: 10px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+/*
+   Submenu icon hover
+*/
+.sidebar-submenu-item:hover i {
+    transform: scale(1.08);
 }
 
 
@@ -217,12 +327,22 @@ body {
     text-decoration: none;
 
     display: inline-block;
+
+    width: 100%;
 }
 
+
+/*
+   IMPORTANT:
+   Do not create a second hover background
+   on the inner link.
+*/
 .sidebar-submenu-item a:hover {
     color: inherit;
 
     text-decoration: none;
+
+    background: transparent;
 }
 
 
@@ -232,6 +352,21 @@ body {
 
 .sidebar-menu-item.standalone {
     background: transparent;
+}
+
+
+/*
+   Standalone hover
+*/
+.sidebar-menu-item.standalone:hover {
+    background: #6f5138;
+
+    color: #ffffff;
+
+    transform: translateX(4px);
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -261,12 +396,27 @@ body {
     text-decoration: none;
 
     font-size: 13px;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
 }
 
+
+/*
+   Logout hover
+*/
 .dashboard-logout:hover {
     color: #ffffff;
 
-    background: #111111;
+    background: #b02a37;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.20);
 }
 
 
@@ -293,6 +443,7 @@ body {
 
 .dashboard-topbar {
     position: relative;
+
     z-index: 10;
 
     height: 51px;
@@ -311,6 +462,11 @@ body {
     background: #ffffff;
 }
 
+
+/* =====================================================
+   SIDEBAR TOGGLE
+===================================================== */
+
 .sidebar-toggle {
     border: none;
 
@@ -323,7 +479,25 @@ body {
     padding: 0;
 
     cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease,
+        background-color 0.2s ease;
 }
+
+.sidebar-toggle:hover {
+    color: #2f6da8;
+
+    background: #f2f2f2;
+
+    transform: scale(1.05);
+}
+
+
+/* =====================================================
+   DASHBOARD PAGE TITLE
+===================================================== */
 
 .dashboard-page-title {
     font-size: 14px;
@@ -622,12 +796,22 @@ body {
     text-decoration: none;
 
     border-radius: 2px;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
 }
 
 .add-personal-detail-button:hover {
     background: #17385f;
 
     color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -846,10 +1030,20 @@ body {
     font-weight: 600;
 
     cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
 }
 
 .personal-blue-button:hover {
     background: #17385f;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -879,87 +1073,30 @@ body {
 
 
 /* =====================================================
-   RESPONSIVE
+   DASHBOARD LINK
 ===================================================== */
-
-@media (max-width: 768px) {
-
-    .dashboard-sidebar {
-        position: absolute;
-
-        z-index: 1000;
-
-        left: 0;
-        top: 0;
-
-        width: 225px;
-
-        min-width: 225px;
-    }
-
-
-    .dashboard-home {
-        padding-top: 25px;
-    }
-
-
-    .dashboard-logos img {
-        height: 75px;
-    }
-
-
-    .dashboard-hindi {
-        font-size: 18px;
-    }
-
-
-    .dashboard-english {
-        font-size: 18px;
-    }
-
-
-    .dashboard-home h1 {
-        font-size: 18px;
-    }
-
-
-    .dashboard-footer {
-        font-size: 10px;
-    }
-
-
-    .personal-form-card {
-        padding: 14px;
-    }
-
-}
 
 .dashboard-link {
     color: #6884a5;
+
     text-decoration: none;
+
     cursor: pointer;
-    transition: color 0.2s ease;
+
+    transition:
+        color 0.2s ease;
 }
 
 .dashboard-link:hover {
     color: #087cff;
+
     text-decoration: none;
 }
 
-/* =========================================================
-   RESPONSIVE DASHBOARD SYSTEM
-========================================================= */
 
-html,
-body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
+/* =====================================================
+   RESPONSIVE — TABLET
+===================================================== */
 
 @media (max-width: 900px) {
 
@@ -995,9 +1132,9 @@ body {
 }
 
 
-/* =========================================================
-   MOBILE DASHBOARD
-========================================================= */
+/* =====================================================
+   RESPONSIVE — GENERAL MOBILE
+===================================================== */
 
 @media (max-width: 768px) {
 
@@ -1005,22 +1142,28 @@ body {
 
     .dashboard-sidebar {
         position: fixed;
+
         z-index: 2000;
+
         top: 0;
         left: 0;
 
         width: 225px;
         min-width: 225px;
+
         height: 100vh;
 
         transform: translateX(0);
-        transition: transform 0.3s ease;
 
-        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.25);
+        transition:
+            transform 0.3s ease;
+
+        box-shadow:
+            5px 0 20px rgba(0, 0, 0, 0.25);
     }
 
 
-    /* When collapsed */
+    /* ---------- COLLAPSED SIDEBAR ---------- */
 
     .dashboard-wrapper.sidebar-collapsed .dashboard-sidebar {
         width: 225px;
@@ -1036,6 +1179,7 @@ body {
 
     .dashboard-main {
         width: 100%;
+
         min-width: 0;
     }
 
@@ -1044,12 +1188,15 @@ body {
 
     .dashboard-topbar {
         height: 51px;
+
         padding: 0 12px;
+
         gap: 15px;
     }
 
     .sidebar-toggle {
         font-size: 22px;
+
         min-width: 28px;
     }
 
@@ -1062,6 +1209,7 @@ body {
 
     .dashboard-home {
         top: 51px;
+
         bottom: 58px;
 
         padding: 25px 15px 30px;
@@ -1071,38 +1219,47 @@ body {
 
     .dashboard-logos {
         gap: 8px;
+
         flex-wrap: nowrap;
     }
 
     .dashboard-logos img {
         height: 75px;
+
         max-width: 42%;
     }
 
     .dashboard-hindi {
         font-size: 18px;
+
         line-height: 1.4;
     }
 
     .dashboard-english {
         font-size: 18px;
+
         line-height: 1.4;
     }
 
     .dashboard-welcome {
         margin-top: 25px;
+
         font-size: 20px;
+
         line-height: 1.4;
     }
 
     .dashboard-home h1 {
         font-size: 18px;
+
         line-height: 1.4;
     }
 
     .logged-in-text {
         margin-top: 22px;
+
         font-size: 13px;
+
         line-height: 1.7;
     }
 
@@ -1111,23 +1268,30 @@ body {
 
     .dashboard-home .alert {
         margin-left: 0;
+
         margin-right: 0;
+
         font-size: 12px;
+
         line-height: 1.5;
     }
 
 
-    /* ---------- DASHBOARD FOOTER ---------- */
+    /* ---------- FOOTER ---------- */
 
     .dashboard-footer {
         height: auto;
+
         min-height: 58px;
 
         padding: 8px 12px;
 
         display: flex;
+
         flex-direction: column;
+
         justify-content: center;
+
         align-items: center;
 
         gap: 3px;
@@ -1135,20 +1299,37 @@ body {
         text-align: center;
 
         font-size: 10px;
+
         line-height: 1.4;
+    }
+
+
+    /* ---------- SIDEBAR HOVER ON MOBILE ---------- */
+
+    .sidebar-menu-item:hover,
+    .sidebar-submenu-item:hover {
+        transform: translateX(2px);
+
+        box-shadow:
+            0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+
+    .dashboard-logout:hover {
+        transform: translateY(-1px);
     }
 
 }
 
 
-/* =========================================================
+/* =====================================================
    PERSONAL DETAILS MOBILE
-========================================================= */
+===================================================== */
 
 @media (max-width: 768px) {
 
     .personal-details-content {
         top: 51px;
+
         bottom: 58px;
 
         padding: 0 8px 20px;
@@ -1158,16 +1339,19 @@ body {
 
     .personal-details-heading {
         min-height: 45px;
+
         height: auto;
 
         padding: 11px 10px;
 
         font-size: 13px;
+
         text-align: center;
     }
 
     .personal-details-card {
         padding: 12px;
+
         overflow-x: hidden;
     }
 
@@ -1176,12 +1360,15 @@ body {
 
     .personal-details-card .row {
         margin-left: 0;
+
         margin-right: 0;
     }
 
     .personal-details-card [class*="col-"] {
         width: 100%;
+
         padding-left: 0;
+
         padding-right: 0;
     }
 
@@ -1191,26 +1378,30 @@ body {
     .personal-details-card,
     .personal-details-card * {
         overflow-wrap: anywhere;
+
         word-break: break-word;
     }
 
     .add-personal-detail-button {
         max-width: 100%;
+
         white-space: normal;
+
         text-align: center;
     }
 
 }
 
 
-/* =========================================================
+/* =====================================================
    ADD PERSONAL DETAILS MOBILE
-========================================================= */
+===================================================== */
 
 @media (max-width: 768px) {
 
     .add-personal-details-content {
         top: 51px;
+
         bottom: 58px;
 
         padding: 0 8px 25px;
@@ -1220,17 +1411,21 @@ body {
 
     .personal-form-title {
         padding: 11px 13px;
+
         font-size: 14px;
+
         line-height: 1.4;
     }
 
     .personal-form-card {
         padding: 13px;
+
         overflow-x: hidden;
     }
 
     .personal-form-section-title {
         line-height: 1.4;
+
         padding: 7px;
     }
 
@@ -1240,13 +1435,16 @@ body {
 
     .personal-form-group label {
         font-size: 12px;
+
         line-height: 1.4;
     }
 
     .personal-form-group input,
     .personal-form-group select {
         width: 100%;
+
         min-width: 0;
+
         height: 38px;
     }
 
@@ -1256,21 +1454,24 @@ body {
 
     .personal-blue-button {
         min-height: 38px;
+
         padding-left: 13px;
+
         padding-right: 13px;
     }
 
 }
 
 
-/* =========================================================
+/* =====================================================
    SESSION PAGE MOBILE
-========================================================= */
+===================================================== */
 
 @media (max-width: 768px) {
 
     .session-page {
         top: 51px;
+
         bottom: 58px;
 
         width: 100%;
@@ -1278,18 +1479,23 @@ body {
         padding: 20px 15px 35px;
 
         overflow-x: hidden;
+
         overflow-y: auto;
     }
 
     .session-container {
         width: 100%;
+
         max-width: 100%;
     }
 
     .session-header {
         font-size: 14px;
+
         line-height: 1.4;
+
         padding: 11px 13px;
+
         margin-bottom: 18px;
     }
 
@@ -1299,6 +1505,7 @@ body {
 
     .session-field label {
         font-size: 12px;
+
         line-height: 1.45;
     }
 
@@ -1306,7 +1513,9 @@ body {
     .session-field select,
     .session-field textarea {
         width: 100%;
+
         max-width: 100%;
+
         font-size: 13px;
     }
 
@@ -1321,22 +1530,25 @@ body {
 
     .session-buttons {
         flex-wrap: wrap;
+
         margin-top: 25px;
+
         gap: 8px;
     }
 
     .session-submit-button,
     .session-back-button {
         min-height: 40px;
+
         padding: 9px 20px;
     }
 
 }
 
 
-/* =========================================================
+/* =====================================================
    SMALL MOBILE SESSION
-========================================================= */
+===================================================== */
 
 @media (max-width: 480px) {
 
@@ -1346,6 +1558,7 @@ body {
 
     .session-header {
         font-size: 13px;
+
         padding: 10px 11px;
     }
 
@@ -1355,6 +1568,7 @@ body {
 
     .session-buttons {
         flex-direction: column;
+
         align-items: stretch;
     }
 
@@ -1366,19 +1580,21 @@ body {
 }
 
 
-/* =========================================================
+/* =====================================================
    MOBILE SIDEBAR CONTENT
-========================================================= */
+===================================================== */
 
 @media (max-width: 480px) {
 
     .dashboard-sidebar {
         width: 235px;
+
         min-width: 235px;
     }
 
     .dashboard-wrapper.sidebar-collapsed .dashboard-sidebar {
         width: 235px;
+
         min-width: 235px;
     }
 
@@ -1388,6 +1604,7 @@ body {
 
     .sidebar-user {
         padding-left: 45px;
+
         padding-right: 15px;
     }
 
@@ -1403,4 +1620,63 @@ body {
         font-size: 12px;
     }
 
+}
+
+
+/* =====================================================
+   FINAL SIDEBAR HOVER SAFETY RULES
+===================================================== */
+
+/*
+   These rules make sure that no menu item
+   accidentally keeps a hover-like background
+   when the cursor is NOT over it.
+*/
+
+.sidebar-menu-item,
+.sidebar-menu-item.active,
+.sidebar-menu-item.standalone {
+    background-color: transparent;
+}
+
+
+/*
+   Background appears ONLY while hovering.
+*/
+.sidebar-menu-item:hover,
+.sidebar-menu-item.active:hover,
+.sidebar-menu-item.standalone:hover {
+    background-color: #6f5138;
+}
+
+
+/*
+   Submenu items are transparent normally.
+*/
+.sidebar-submenu-item {
+    background-color: transparent;
+}
+
+
+/*
+   Submenu background appears ONLY on hover.
+*/
+.sidebar-submenu-item:hover {
+    background-color: #6f5138;
+}
+
+
+/*
+   Logout keeps its own black normal state.
+*/
+.dashboard-logout {
+    background-color: #050505;
+}
+
+
+/*
+   Logout hover.
+*/
+.dashboard-logout:hover {
+    background-color: #b02a37;
 }

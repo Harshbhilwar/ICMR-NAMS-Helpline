@@ -2812,3 +2812,130 @@ img {
     }
 
 }
+
+/* =========================================================
+   NAVBAR HOVER EFFECTS
+========================================================= */
+
+/* Normal navbar links */
+.navigation-links a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+
+    color: #000000;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        border-bottom-color 0.25s ease;
+}
+
+
+/* Hover effect */
+.navigation-links a:hover {
+    color: #0d6efd;
+    background-color: #f0f7ff;
+    border-bottom: 3px solid #0d6efd;
+}
+
+
+/* Login/Register button */
+.login-register-button {
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* Login/Register hover */
+.login-register-button:hover {
+    background-color: #df6559;
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   MOBILE NAVBAR HOVER
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .navigation-links a {
+        min-height: 44px;
+        padding: 8px 15px;
+
+        color: #ffffff;
+        background-color: transparent;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+
+    .navigation-links a:hover {
+        color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.10);
+        border-bottom: 3px solid #0d6efd;
+    }
+
+
+    .login-register-button:hover {
+        background-color: #df6559;
+        color: #ffffff;
+        transform: none;
+    }
+
+}
+
+/* =========================================================
+   COORDINATING TEAM CARD HOVER EFFECT
+========================================================= */
+
+.team-card {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* Card hover */
+
+.team-card:hover {
+    transform: scale(1.03);
+
+    border-color: #2f6da8;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.18);
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .team-card:hover {
+        transform: scale(1.01);
+
+        box-shadow:
+            0 5px 14px rgba(0, 0, 0, 0.15);
+    }
+
+}
